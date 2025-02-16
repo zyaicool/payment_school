@@ -1,0 +1,187 @@
+[
+  {
+    "name": "PT. BANK CIMB NIAGA - (CIMB)",
+    "alias": "CIMB",
+    "code": "022"
+  },
+  {
+    "name": "PT. BANK CIMB NIAGA UNIT USAHA SYARIAH - (CIMB SYARIAH)",
+    "alias": "CIMB SYARIAH",
+    "code": "730"
+  },
+  {
+    "name": "PT. BNI SYARIAH",
+    "alias": "BNI SYARIAH",
+    "code": "427"
+  },
+  {
+    "name": "PT. BANK BCA SYARIAH",
+    "alias": "BCA SYARIAH",
+    "code": "536"
+  },
+  {
+    "name": "PT. BANK BUKOPIN",
+    "alias": "BUKOPIN",
+    "code": "441"
+  },
+  {
+    "name": "PT. BANK CENTRAL ASIA, TBK - (BCA)",
+    "alias": "BCA",
+    "code": "014"
+  },
+  {
+    "name": "PT. BANK DANAMON INDONESIA",
+    "alias": "DANAMON",
+    "code": "011"
+  },
+  {
+    "name": "PT. BANK DKI",
+    "alias": "DKI",
+    "code": "111"
+  },
+  {
+    "name": "PT. BANK DBS INDONESIA",
+    "alias": "DBS",
+    "code": "046"
+  },
+  {
+    "name": "PT. BANK HSBC INDONESIA",
+    "alias": "HSBC",
+    "code": "087"
+  },
+  {
+    "name": "PT. BANK MANDIRI (PERSERO), TBK",
+    "alias": "MANDIRI",
+    "code": "008"
+  },
+  {
+    "name": "PT. BANK MANDIRI TASPEN POS",
+    "alias": "MANDIRI TASPEN",
+    "code": "564"
+  },
+  {
+    "name": "PT. BANK MAYBANK INDONESIA, TBK",
+    "alias": "MAYBANK",
+    "code": "016"
+  },
+  {
+    "name": "PT. BANK MAYORA",
+    "alias": "MAYORA",
+    "code": "553"
+  },
+  {
+    "name": "PT. BANK MEGA, TBK",
+    "alias": "MEGA",
+    "code": "426"
+  },
+  {
+    "name": "PT. BANK MUAMALAT INDONESIA, TBK",
+    "alias": "MUAMALAT",
+    "code": "147"
+  },
+  {
+    "name": "PT. BANK NEGARA INDONESIA (PERSERO), TBK (BNI)",
+    "alias": "BNI",
+    "code": "009"
+  },
+  {
+    "name": "PT. BANK OCBC NISP, TBK",
+    "alias": "OCBC",
+    "code": "028"
+  },
+  {
+    "name": "PT. BANK OCBC NISP, TBK UNIT USAHA SYARIAH",
+    "alias": "OCBC SYARIAH",
+    "code": "731"
+  },
+  {
+    "name": "PT. BANK PERMATA, TBK",
+    "alias": "PERMATA",
+    "code": "013"
+  },
+  {
+    "name": "PT. BANK PERMATA, TBK UNIT USAHA SYARIAH",
+    "alias": "PERMATA SYARIAH",
+    "code": "721"
+  },
+  {
+    "name": "PT. BANK RAKYAT INDONESIA (PERSERO), TBK (BRI)",
+    "alias": "BRI",
+    "code": "002"
+  },
+  {
+    "name": "PT. BANK RAKYAT INDONESIA AGRONIAGA, TBK",
+    "alias": "BRI AGRONIAGA",
+    "code": "494"
+  },
+  {
+    "name": "PT. BANK SYARIAH BRI - (BRI SYARIAH)",
+    "alias": "BRI SYARIAH",
+    "code": "422"
+  },
+  {
+    "name": "PT. BANK SYARIAH BUKOPIN",
+    "alias": "BUKOPIN SYARIAH",
+    "code": "521"
+  },
+  {
+    "name": "PT. BANK SYARIAH MANDIRI",
+    "alias": "MANDIRI SYARIAH/BSI",
+    "code": "451"
+  },
+  {
+    "name": "PT. BANK TABUNGAN NEGARA (PERSERO), TBK (BTN)",
+    "alias": "BTN",
+    "code": "200"
+  },
+  {
+    "name": "PT. BANK TABUNGAN NEGARA (PERSERO), TBK UNIT USAHA SYARIAH",
+    "alias": "BTN SYARIAH",
+    "code": "723"
+  },
+  {
+    "name": "PT. BANK TABUNGAN PENSIUNAN NASIONAL - (BTPN)",
+    "alias": "BTPN",
+    "code": "213"
+  },
+  {
+    "name": "PT. BANK TABUNGAN PENSIUNAN NASIONAL SYARIAH - (BTPN Syariah)",
+    "alias": "BTPN SYARIAH",
+    "code": "547"
+  },
+  {
+    "name": "PT. BANK WOORI SAUDARA INDONESIA 1906, TBK (BWS)",
+    "alias": "BWS",
+    "code": "212"
+  },
+  {
+    "name": "PT. BANK JABAR BANTEN SYARIAH",
+    "alias": "BJB SYRIAH",
+    "code": "425"
+  },
+  {
+    "name": "PT. BANK PEMBANGUNAN DAERAH BANTEN",
+    "alias": "BPD BANTEN",
+    "code": "137"
+  },
+  {
+    "name": "PT. BANK CAPITAL INDONESIA",
+    "alias": "CAPITAL",
+    "code": "054"
+  },
+  {
+    "name": "PT. BANK DKI UNIT USAHA SYARIAH",
+    "alias": "DKI SYARIAH",
+    "code": "724"
+  },
+  {
+    "name": "PT. BANK ICBC INDONESIA",
+    "alias": "ICBC",
+    "code": "164"
+  },
+  {
+    "name": "PT. BANK JTRUST INDONESIA, TBK",
+    "alias": "JTRUST",
+    "code": "095"
+  }
+]

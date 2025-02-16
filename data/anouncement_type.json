@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "name": "Event",
+    "code": "AT01"
+  },
+  {
+    "id": 2,
+    "name": "Pengumuman",
+    "code": "AT02"
+  }
+]

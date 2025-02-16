@@ -1,0 +1,16 @@
+[{
+        "id": 1,
+        "code": "PS01",
+        "name": "Menunggu"
+    },
+    {
+        "id": 2,
+        "code": "PS02",
+        "name": "Lunas"
+    },
+    {
+        "id": 3,
+        "code": "PS03",
+        "name": "Gagal"
+    }
+]
