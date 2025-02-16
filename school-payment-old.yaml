@@ -1,0 +1,4446 @@
+openapi: 3.0.1
+info:
+  title: School Payment API
+  description: API for managing school payment transactions.
+  version: 1.0.0
+servers:
+  - url: https://sit.siprusedu.com/api/
+    description: SIT Server
+  - url: https://dev.siprusedu.com/api/
+    description: Development Server
+  - url: http://localhost:8081
+    description: Local Development Server
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+tags:
+  - name: role
+  - name: student parent
+  - name: student
+  - name: user
+  - name: billing type
+  - name: billing
+  - name: school year
+  - name: school grade
+  - name: school class
+  - name: school
+  - name: billing student
+  - name: transaction
+  - name: transaction > midtrans
+  - name: dashbord
+  - name: payment history
+  - name: bank account
+  - name: prefix class
+  - name: school major
+  - name: payment method
+paths:
+  /v1/role/getAllRole:
+    get:
+      tags:
+        - role
+      summary: get all data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 07:37:50 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '30'
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: get all data - data not found
+                  value:
+                    page: 1
+                    limit: 1
+                    data: []
+                example-1:
+                  summary: get all data - success
+                  value:
+                    page: 1
+                    limit: 10
+                    data:
+                      - id: 1
+                        createdAt: '2024-09-17T15:10:54.792988+07:00'
+                        createdBy: 0
+                        updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                        updatedBy: 0
+                        deletedAt: null
+                        deletedBy: null
+                        name: Super Admin
+                        RoleMatrix: null
+                      - id: 2
+                        createdAt: '2024-09-17T15:10:54.792988+07:00'
+                        createdBy: 0
+                        updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                        updatedBy: 0
+                        deletedAt: null
+                        deletedBy: null
+                        name: Orang Tua/Siswa
+                        RoleMatrix: null
+                      - id: 3
+                        createdAt: '2024-09-17T15:10:54.792988+07:00'
+                        createdBy: 0
+                        updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                        updatedBy: 0
+                        deletedAt: null
+                        deletedBy: null
+                        name: Tata Usaha
+                        RoleMatrix: null
+                      - id: 4
+                        createdAt: '2024-09-17T15:10:54.792988+07:00'
+                        createdBy: 0
+                        updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                        updatedBy: 0
+                        deletedAt: null
+                        deletedBy: null
+                        name: Kasir
+                        RoleMatrix: null
+                      - id: 5
+                        createdAt: '2024-09-24T16:17:44.057261+07:00'
+                        createdBy: 0
+                        updatedAt: '2024-09-24T16:17:44.057261+07:00'
+                        updatedBy: 0
+                        deletedAt: null
+                        deletedBy: null
+                        name: Admin
+                        RoleMatrix: null
+        '401':
+          description: Unauthorized
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 07:36:20 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '36'
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: get all data - error token expired
+                  value:
+                    error: Invalid or expired token
+                example-1:
+                  summary: get all data - error user must login
+                  value:
+                    error: Please Login
+                example-2:
+                  summary: get all data - error user must login
+                  value:
+                    error: Please Login
+  /v1/role/detail/1:
+    get:
+      tags:
+        - role
+      summary: get data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 13:38:38 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '2489'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                id: 1
+                createdAt: '2024-09-17T15:10:54.792988+07:00'
+                createdBy: 0
+                updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                updatedBy: 0
+                deletedAt: null
+                deletedBy: null
+                name: Super Admin
+                RoleMatrix:
+                  - id: 1
+                    createdAt: '2024-09-17T15:10:54.792988+07:00'
+                    createdBy: 0
+                    updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                    updatedBy: 0
+                    deletedAt: null
+                    deletedBy: null
+                    roleId: 1
+                    pageName: login
+                    pageCode: A002
+                    isCreate: false
+                    isRead: true
+                    isUpdate: false
+                    isDelete: false
+                  - id: 2
+                    createdAt: '2024-09-17T15:10:54.792988+07:00'
+                    createdBy: 0
+                    updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                    updatedBy: 0
+                    deletedAt: null
+                    deletedBy: null
+                    roleId: 1
+                    pageName: registrasi
+                    pageCode: A001
+                    isCreate: true
+                    isRead: false
+                    isUpdate: false
+                    isDelete: false
+                  - id: 3
+                    createdAt: '2024-09-17T15:10:54.792988+07:00'
+                    createdBy: 0
+                    updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                    updatedBy: 0
+                    deletedAt: null
+                    deletedBy: null
+                    roleId: 1
+                    pageName: dashboard akun
+                    pageCode: A003
+                    isCreate: true
+                    isRead: true
+                    isUpdate: true
+                    isDelete: true
+                  - id: 4
+                    createdAt: '2024-09-17T15:10:54.792988+07:00'
+                    createdBy: 0
+                    updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                    updatedBy: 0
+                    deletedAt: null
+                    deletedBy: null
+                    roleId: 1
+                    pageName: tambah akun user
+                    pageCode: A004
+                    isCreate: true
+                    isRead: false
+                    isUpdate: false
+                    isDelete: false
+                  - id: 5
+                    createdAt: '2024-09-17T15:10:54.792988+07:00'
+                    createdBy: 0
+                    updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                    updatedBy: 0
+                    deletedAt: null
+                    deletedBy: null
+                    roleId: 1
+                    pageName: edit akun user
+                    pageCode: A005
+                    isCreate: false
+                    isRead: false
+                    isUpdate: true
+                    isDelete: false
+                  - id: 6
+                    createdAt: '2024-09-17T15:10:54.792988+07:00'
+                    createdBy: 0
+                    updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                    updatedBy: 0
+                    deletedAt: null
+                    deletedBy: null
+                    roleId: 1
+                    pageName: dashboard siswa
+                    pageCode: A006
+                    isCreate: true
+                    isRead: true
+                    isUpdate: true
+                    isDelete: true
+                  - id: 7
+                    createdAt: '2024-09-17T15:10:54.792988+07:00'
+                    createdBy: 0
+                    updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                    updatedBy: 0
+                    deletedAt: null
+                    deletedBy: null
+                    roleId: 1
+                    pageName: tambah siswa baru
+                    pageCode: A007
+                    isCreate: true
+                    isRead: false
+                    isUpdate: false
+                    isDelete: false
+                  - id: 8
+                    createdAt: '2024-09-17T15:10:54.792988+07:00'
+                    createdBy: 0
+                    updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                    updatedBy: 0
+                    deletedAt: null
+                    deletedBy: null
+                    roleId: 1
+                    pageName: edit informasi siswa
+                    pageCode: A008
+                    isCreate: false
+                    isRead: false
+                    isUpdate: true
+                    isDelete: false
+        '401':
+          description: Unauthorized
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 13:36:25 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '24'
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: get data - error user must login
+                  value:
+                    error: Please Login
+                example-1:
+                  summary: get data - error token expired
+                  value:
+                    error: Invalid or expired token
+        '404':
+          description: Not Found
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 13:48:28 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '26'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                error: Data not found
+  /v1/parent/getAllParent:
+    get:
+      tags:
+        - student parent
+      summary: get all data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: search
+          in: query
+          schema:
+            type: string
+          example: tes
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/parent/detail/1:
+    get:
+      tags:
+        - student parent
+      summary: get data
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/parent/create:
+    post:
+      tags:
+        - student parent
+      summary: create parent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                parentName: tes1
+                parentAddress: ''
+                parentHandphone: 0
+                parentMail: ''
+                parentCitizenship: ''
+                parentSalary: ''
+                parentStatus: ''
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6Im11aGFtbWFkLnN5YWljaHVsOTlAZ21haWwuY29tIiwiZXhwIjoxNzI2ODg2MzAxfQ.7VBF67e8Aqq9K2XfbIIMOIOzxdLwgRaDo0Z18I1DfQw
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/parent/createBatch:
+    post:
+      tags:
+        - student parent
+      summary: create parent batch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                - parentName: tes ayah
+                  parentAddress: ''
+                  parentHandphone: 0
+                  parentMail: ayah@mail.com
+                  parentCitizenship: ''
+                  parentSalary: ''
+                  parentStatus: Ayah
+                - parentName: tes ibu
+                  parentAddress: ''
+                  parentHandphone: 0
+                  parentMail: ibu@mail.com
+                  parentCitizenship: ''
+                  parentSalary: ''
+                  parentStatus: Ibu
+                - parentName: tes wali
+                  parentAddress: ''
+                  parentHandphone: 0
+                  parentMail: wali@mail.com
+                  parentCitizenship: ''
+                  parentSalary: ''
+                  parentStatus: Wali
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyNSwiZW1haWwiOiJtdWhhbW1hZC5zeWFpY2h1bEBkaWdpZm9ybS5jby5pZCIsInJvbGVfaWQiOjIsImV4cCI6MTcyNzM0MDE2MH0.fdHv2IB0f-csKD1QomVzZzyG-B4pwFh8o_82Dmct41A
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/parent/update/1:
+    put:
+      tags:
+        - student parent
+      summary: update parent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                fatherName: tes1
+                fatherAddress: ''
+                fatherHandphone: 0
+                fatherMail: ''
+                fatherCitizenship: ''
+                fatherSalary: ''
+                motherName: tes2
+                motherAddress: ''
+                motherHandphone: 0
+                motherMail: ''
+                motherCitizenship: ''
+                motherSalary: ''
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6Im11aGFtbWFkLnN5YWljaHVsOTlAZ21haWwuY29tIiwiZXhwIjoxNzI2ODg2MzAxfQ.7VBF67e8Aqq9K2XfbIIMOIOzxdLwgRaDo0Z18I1DfQw
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/parent/updateBatch:
+    put:
+      tags:
+        - student parent
+      summary: update parent batch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                - parentName: tes ayah
+                  parentAddress: ''
+                  parentHandphone: 0
+                  parentMail: ayah@mail.com
+                  parentCitizenship: ''
+                  parentSalary: ''
+                  parentStatus: Ayah
+                - parentName: tes ibu
+                  parentAddress: ''
+                  parentHandphone: 0
+                  parentMail: ibu@mail.com
+                  parentCitizenship: ''
+                  parentSalary: ''
+                  parentStatus: Ibu
+                - parentName: tes wali
+                  parentAddress: ''
+                  parentHandphone: 0
+                  parentMail: wali@mail.com
+                  parentCitizenship: ''
+                  parentSalary: ''
+                  parentStatus: Wali
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyNSwiZW1haWwiOiJtdWhhbW1hZC5zeWFpY2h1bEBkaWdpZm9ybS5jby5pZCIsInJvbGVfaWQiOjIsImV4cCI6MTcyNzM0MDE2MH0.fdHv2IB0f-csKD1QomVzZzyG-B4pwFh8o_82Dmct41A
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/parent/getByUser:
+    get:
+      tags:
+        - student parent
+      summary: get data parent by user login
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6Im11aGFtbWFkLnN5YWljaHVsOTlAZ21haWwuY29tIiwiZXhwIjoxNzI2ODg2MzAxfQ.7VBF67e8Aqq9K2XfbIIMOIOzxdLwgRaDo0Z18I1DfQw
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/student/getAllStudent:
+    get:
+      tags:
+        - student
+      summary: get all data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: gradeId
+          in: query
+          schema:
+            type: string
+        - name: searchNis
+          in: query
+          schema:
+            type: string
+        - name: classId
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 08:06:32 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '3388'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                page: 1
+                limit: 5
+                data:
+                  - id: 1
+                    createdAt: '2024-09-25T21:14:02.870028+07:00'
+                    createdBy: 24
+                    updatedAt: '2024-09-25T21:14:02.870028+07:00'
+                    updatedBy: 0
+                    deletedAt: null
+                    deletedBy: null
+                    nisn: 11
+                    registrationNumber: ''
+                    nik: 22
+                    fullName: cihuy1234
+                    gender: Laki-laki
+                    religion: Islam
+                    citizenship: Warga Negara Indonesia
+                    birthPlace: Bogor
+                    birthDate: '2003-12-10T07:00:00+07:00'
+                    address: Bogor
+                    schoolGrade: SMK
+                    schoolGradeId: 1
+                    schoolClass: ''
+                    schoolClassId: 0
+                    noHandphone: 8627126331
+                    height: ''
+                    weight: ''
+                    medicalHistory: ''
+                    distanceToSchool: 3000
+                    sibling: ''
+                    nickName: ''
+                    email: ''
+                    entryYear: '2023'
+                    status: calon siswa
+                    image: ''
+                    userStudents: null
+                  - id: 2
+                    createdAt: '2024-09-25T21:24:22.032595+07:00'
+                    createdBy: 24
+                    updatedAt: '2024-09-25T21:24:22.032595+07:00'
+                    updatedBy: 0
+                    deletedAt: null
+                    deletedBy: null
+                    nisn: 12
+                    registrationNumber: ''
+                    nik: 23
+                    fullName: cihuy1234111
+                    gender: Laki-laki
+                    religion: Islam
+                    citizenship: Warga Negara Indonesia
+                    birthPlace: Bogor
+                    birthDate: '2003-12-10T07:00:00+07:00'
+                    address: Bogor
+                    schoolGrade: SMK
+                    schoolGradeId: 1
+                    schoolClass: ''
+                    schoolClassId: 0
+                    noHandphone: 8627126331
+                    height: ''
+                    weight: ''
+                    medicalHistory: ''
+                    distanceToSchool: 3000
+                    sibling: ''
+                    nickName: ''
+                    email: ''
+                    entryYear: '2023'
+                    status: calon siswa
+                    image: ''
+                    userStudents: null
+                  - id: 3
+                    createdAt: '2024-09-26T15:27:09.221966+07:00'
+                    createdBy: 25
+                    updatedAt: '2024-09-26T15:52:37.694913+07:00'
+                    updatedBy: 25
+                    deletedAt: null
+                    deletedBy: null
+                    nisn: 12
+                    registrationNumber: ''
+                    nik: 23
+                    fullName: cihuy1234111
+                    gender: Laki-laki
+                    religion: Islam
+                    citizenship: Warga Negara Indonesia
+                    birthPlace: Bogor
+                    birthDate: '2003-12-10T07:00:00+07:00'
+                    address: Bogor
+                    schoolGrade: SMK
+                    schoolGradeId: 1
+                    schoolClass: 1A
+                    schoolClassId: 1
+                    noHandphone: 8627126331
+                    height: ''
+                    weight: ''
+                    medicalHistory: ''
+                    distanceToSchool: 3000
+                    sibling: ''
+                    nickName: ''
+                    email: ''
+                    entryYear: '2023'
+                    status: calon siswa
+                    image: ''
+                    userStudents: null
+                  - id: 4
+                    createdAt: '2024-09-30T10:11:30.12674+07:00'
+                    createdBy: 24
+                    updatedAt: '2024-09-30T10:21:26.239666+07:00'
+                    updatedBy: 24
+                    deletedAt: null
+                    deletedBy: null
+                    nisn: 1122
+                    registrationNumber: '12131341'
+                    nik: 124211
+                    fullName: abch1213
+                    gender: Laki-laki
+                    religion: Islam
+                    citizenship: Warga Negara Indonesia
+                    birthPlace: Bogor
+                    birthDate: '2003-12-10T07:00:00+07:00'
+                    address: Bogor
+                    schoolGrade: SMK
+                    schoolGradeId: 1
+                    schoolClass: 1A
+                    schoolClassId: 1
+                    noHandphone: 8627126331
+                    height: ''
+                    weight: ''
+                    medicalHistory: ''
+                    distanceToSchool: 7000
+                    sibling: ''
+                    nickName: ''
+                    email: ''
+                    entryYear: ''
+                    status: ''
+                    image: ''
+                    userStudents: null
+                  - id: 5
+                    createdAt: '2024-09-30T10:35:35.385026+07:00'
+                    createdBy: 24
+                    updatedAt: '2024-09-30T10:35:35.385026+07:00'
+                    updatedBy: 0
+                    deletedAt: null
+                    deletedBy: null
+                    nisn: 1122
+                    registrationNumber: '12131341'
+                    nik: 124211
+                    fullName: zyaciool
+                    gender: Laki-laki
+                    religion: Islam
+                    citizenship: Warga Negara Indonesia
+                    birthPlace: Bogor
+                    birthDate: '2003-12-10T07:00:00+07:00'
+                    address: Bogor
+                    schoolGrade: SMK
+                    schoolGradeId: 1
+                    schoolClass: 1A
+                    schoolClassId: 1
+                    noHandphone: 8627126331
+                    height: ''
+                    weight: ''
+                    medicalHistory: ''
+                    distanceToSchool: 7000
+                    sibling: ''
+                    nickName: ''
+                    email: ''
+                    entryYear: ''
+                    status: ''
+                    image: 1727667334.jpeg
+                    userStudents: null
+  /api/v1/student/image/6:
+    get:
+      tags:
+        - student
+      summary: get student image
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/student/detail/1:
+    get:
+      tags:
+        - student
+      summary: get data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/student/create:
+    post:
+      tags:
+        - student
+      summary: create student
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                nisn:
+                  type: integer
+                  example: '1122'
+                nis:
+                  type: integer
+                  example: '12131341'
+                nik:
+                  type: integer
+                  example: '124211'
+                fullName:
+                  type: string
+                  example: syaichul
+                gender:
+                  type: string
+                  example: Laki-laki
+                religion:
+                  type: string
+                  example: Islam
+                citizenship:
+                  type: string
+                  example: Warga Negara Indonesia
+                birthPlace:
+                  type: string
+                  example: Bogor
+                birthDate:
+                  type: string
+                  example: '2003-12-10'
+                address:
+                  type: string
+                  example: Bogor
+                schoolGradeId:
+                  type: integer
+                  example: '1'
+                schoolClassId:
+                  type: integer
+                  example: '1'
+                noHandphone:
+                  type: integer
+                  example: '628627126331'
+                height:
+                  type: string
+                weight:
+                  type: string
+                medicalHistory:
+                  type: string
+                distanceToSchool:
+                  type: integer
+                  example: '7000'
+                sibling:
+                  type: string
+                nickName:
+                  type: string
+                email:
+                  type: string
+                  example: mail@mail.com
+                status:
+                  type: string
+                entryYear:
+                  type: string
+                image:
+                  type: string
+                  format: binary
+                emailUser:
+                  type: string
+                  example: user2@mail.com
+                schoolId:
+                  type: integer
+                  example: '1'
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Thu, 03 Oct 2024 10:12:14 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '692'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                data:
+                  id: 10
+                  createdAt: '2024-10-03T17:12:14.1460025+07:00'
+                  createdBy: 0
+                  updatedAt: '2024-10-03T17:12:14.1460025+07:00'
+                  updatedBy: 0
+                  deletedAt: null
+                  deletedBy: null
+                  nisn: 0
+                  registrationNumber: ''
+                  nis: '12131341'
+                  nik: 0
+                  fullName: syaichul
+                  gender: Laki-laki
+                  religion: Islam
+                  citizenship: ''
+                  birthPlace: Bogor
+                  birthDate: '2003-12-10T00:00:00Z'
+                  address: Bogor
+                  schoolGrade: ''
+                  schoolGradeId: 1
+                  schoolClass: ''
+                  schoolClassId: 1
+                  noHandphone: 8627126331
+                  height: ''
+                  weight: ''
+                  medicalHistory: ''
+                  distanceToSchool: 0
+                  sibling: ''
+                  nickName: ''
+                  email: mail@mail.com
+                  entryYear: ''
+                  status: ''
+                  image: ''
+                  userStudents: null
+                message: Data berhasil disimpan.
+        '401':
+          description: Unauthorized
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Thu, 03 Oct 2024 10:12:39 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '24'
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: create student - error user must login
+                  value:
+                    error: Please Login
+                example-1:
+                  summary: create student - error invalid token
+                  value:
+                    error: Invalid or expired token
+        '500':
+          description: Internal Server Error
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Thu, 03 Oct 2024 10:24:50 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '40'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                error: Email does not match format.
+  /v1/student/update/95:
+    put:
+      tags:
+        - student
+      summary: update student
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: '95'
+                nisn:
+                  type: integer
+                  example: '0'
+                registrationNumber:
+                  type: string
+                nis:
+                  type: integer
+                  example: '12000687'
+                nik:
+                  type: string
+                fullName:
+                  type: string
+                  example: 'tessss '
+                gender:
+                  type: string
+                  example: laki-laki
+                religion:
+                  type: string
+                  example: islam
+                citizenship:
+                  type: string
+                birthPlace:
+                  type: string
+                  example: majalengka
+                birthDate:
+                  type: string
+                  example: '2004-01-01T00:00:00Z'
+                address:
+                  type: string
+                  example: sidoarjo sektor III
+                schoolGradeId:
+                  type: integer
+                  example: '1'
+                schoolGrade:
+                  type: string
+                  example: SMA
+                schoolClassId:
+                  type: integer
+                  example: '1'
+                schoolClass:
+                  type: string
+                  example: X IPA 1
+                schoolId:
+                  type: integer
+                  example: '1'
+                schoolName:
+                  type: string
+                  example: SMA Pembangunan Jaya
+                noHandphone:
+                  type: integer
+                  example: '0823718294722'
+                height:
+                  type: string
+                weight:
+                  type: string
+                medicalHistory:
+                  type: string
+                distanceToSchool:
+                  type: integer
+                  example: '0'
+                sibling:
+                  type: string
+                nickName:
+                  type: string
+                email:
+                  type: string
+                  example: user222@mail.com
+                entryYear:
+                  type: string
+                status:
+                  type: string
+                  example: Siswa
+                image:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/student/delete/1:
+    delete:
+      tags:
+        - student
+      summary: delete student
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/student/linkToUser:
+    post:
+      tags:
+        - student
+      summary: link student to user(parent)
+      requestBody:
+        content: {}
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+        - name: user_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: student_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/student/user/1:
+    get:
+      tags:
+        - student
+      summary: get student by user id
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/student/getFileExcel:
+    get:
+      tags:
+        - student
+      summary: download file format import
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/student/upload:
+    post:
+      tags:
+        - student
+      summary: upload data student
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Sun, 06 Oct 2024 16:42:51 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '45'
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: upload data student - success
+                  value:
+                    data: null
+                    message: Success upload data
+                example-1:
+                  summary: upload data student - failed upload
+                  value:
+                    data:
+                      - Nis: '12131345'
+                        StudentName: tes aja
+                    message: Failed upload data
+        '400':
+          description: Bad Request
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Sun, 06 Oct 2024 16:45:50 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: text/plain; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '21'
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: Unsupported file type
+  /v1/user/getAllUser:
+    get:
+      tags:
+        - user
+      summary: get all data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: roleId
+          in: query
+          schema:
+            type: string
+          example: 3,4,5
+        - name: schoolId
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 06:25:07 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '2884'
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: get all data - success
+                  value:
+                    page: 1
+                    limit: 5
+                    data:
+                      - id: 1
+                        createdAt: '2024-09-18T15:53:16.994313+07:00'
+                        createdBy: 0
+                        updatedAt: '2024-09-18T15:53:16.994313+07:00'
+                        updatedBy: 0
+                        deletedAt: null
+                        deletedBy: null
+                        roleId: 1
+                        username: syaichul99
+                        Role:
+                          id: 0
+                          createdAt: '0001-01-01T00:00:00Z'
+                          createdBy: 0
+                          updatedAt: '0001-01-01T00:00:00Z'
+                          updatedBy: 0
+                          deletedAt: null
+                          deletedBy: null
+                          name: ''
+                          RoleMatrix: null
+                        email: muhammad.syaichul99@gmail.com
+                        password: >-
+                          $2a$10$DxqnRmx94sPvti7Dg6Nhr.AuRHELaiirMteqalQ0OPAbi9.UWwcby
+                        isVerification: true
+                        isBlock: false
+                        userSchool: null
+                        userStudents: null
+                      - id: 24
+                        createdAt: '2024-09-24T20:31:54.231126+07:00'
+                        createdBy: 1
+                        updatedAt: '2024-09-24T20:31:54.231126+07:00'
+                        updatedBy: 1
+                        deletedAt: null
+                        deletedBy: null
+                        roleId: 5
+                        username: zyaicool1
+                        Role:
+                          id: 0
+                          createdAt: '0001-01-01T00:00:00Z'
+                          createdBy: 0
+                          updatedAt: '0001-01-01T00:00:00Z'
+                          updatedBy: 0
+                          deletedAt: null
+                          deletedBy: null
+                          name: ''
+                          RoleMatrix: null
+                        email: zyaicooldragneel@gmail.com
+                        password: >-
+                          $2a$10$DxqnRmx94sPvti7Dg6Nhr.AuRHELaiirMteqalQ0OPAbi9.UWwcby
+                        isVerification: false
+                        isBlock: false
+                        userSchool: null
+                        userStudents: null
+                      - id: 25
+                        createdAt: '2024-09-25T15:41:43.996773+07:00'
+                        createdBy: 1
+                        updatedAt: '2024-09-25T20:58:34.147156+07:00'
+                        updatedBy: 1
+                        deletedAt: null
+                        deletedBy: null
+                        roleId: 2
+                        username: syaichul123
+                        Role:
+                          id: 0
+                          createdAt: '0001-01-01T00:00:00Z'
+                          createdBy: 0
+                          updatedAt: '0001-01-01T00:00:00Z'
+                          updatedBy: 0
+                          deletedAt: null
+                          deletedBy: null
+                          name: ''
+                          RoleMatrix: null
+                        email: muhammad.syaichul@digiform.co.id
+                        password: >-
+                          $2a$10$XIReVoWs/pW71gSecv1cWuNMqCHBeR5/S3nNoWF.pvBaSf3S4yM72
+                        isVerification: false
+                        isBlock: false
+                        userSchool: null
+                        userStudents: null
+                      - id: 28
+                        createdAt: '2024-09-25T20:16:13.586755+07:00'
+                        createdBy: 1
+                        updatedAt: '2024-09-25T20:16:13.586755+07:00'
+                        updatedBy: 1
+                        deletedAt: null
+                        deletedBy: null
+                        roleId: 2
+                        username: syaichul1234
+                        Role:
+                          id: 0
+                          createdAt: '0001-01-01T00:00:00Z'
+                          createdBy: 0
+                          updatedAt: '0001-01-01T00:00:00Z'
+                          updatedBy: 0
+                          deletedAt: null
+                          deletedBy: null
+                          name: ''
+                          RoleMatrix: null
+                        email: muhammad.syaichull@digiform.co.id
+                        password: >-
+                          $2a$10$2uGU6DJgFE430D3O9oPM8.G5jgiNCBRWzqAExzsXn2GmdzklM/Gqe
+                        isVerification: false
+                        isBlock: false
+                        userSchool: null
+                        userStudents: null
+                      - id: 29
+                        createdAt: '2024-09-26T14:51:28.747681+07:00'
+                        createdBy: 24
+                        updatedAt: '2024-09-26T14:51:28.747681+07:00'
+                        updatedBy: 24
+                        deletedAt: null
+                        deletedBy: null
+                        roleId: 3
+                        username: syaichul12356
+                        Role:
+                          id: 0
+                          createdAt: '0001-01-01T00:00:00Z'
+                          createdBy: 0
+                          updatedAt: '0001-01-01T00:00:00Z'
+                          updatedBy: 0
+                          deletedAt: null
+                          deletedBy: null
+                          name: ''
+                          RoleMatrix: null
+                        email: muhammad.syaichullll@digiform.co.id
+                        password: >-
+                          $2a$10$Yy54HGX3n1meiVhxcBFcyO8aiHNGSsMt.A16TfFWz6lldPD.UkIyW
+                        isVerification: false
+                        isBlock: false
+                        userSchool: null
+                        userStudents: null
+                example-1:
+                  summary: get all data - data not found
+                  value:
+                    page: 1
+                    limit: 5
+                    data: []
+                example-2:
+                  summary: get all data - success
+                  value:
+                    page: 1
+                    limit: 10
+                    data:
+                      - id: 1
+                        createdAt: '2024-09-18T15:53:16.994313+07:00'
+                        createdBy: 0
+                        updatedAt: '2024-09-18T15:53:16.994313+07:00'
+                        updatedBy: 0
+                        deletedAt: null
+                        deletedBy: null
+                        roleId: 1
+                        username: syaichul99
+                        Role:
+                          id: 0
+                          createdAt: '0001-01-01T00:00:00Z'
+                          createdBy: 0
+                          updatedAt: '0001-01-01T00:00:00Z'
+                          updatedBy: 0
+                          deletedAt: null
+                          deletedBy: null
+                          name: ''
+                          RoleMatrix: null
+                        email: muhammad.syaichul99@gmail.com
+                        password: >-
+                          $2a$10$DxqnRmx94sPvti7Dg6Nhr.AuRHELaiirMteqalQ0OPAbi9.UWwcby
+                        isVerification: true
+                        isBlock: false
+                        userSchool: null
+                        userStudents: null
+                      - id: 24
+                        createdAt: '2024-09-24T20:31:54.231126+07:00'
+                        createdBy: 1
+                        updatedAt: '2024-09-24T20:31:54.231126+07:00'
+                        updatedBy: 1
+                        deletedAt: null
+                        deletedBy: null
+                        roleId: 5
+                        username: zyaicool1
+                        Role:
+                          id: 0
+                          createdAt: '0001-01-01T00:00:00Z'
+                          createdBy: 0
+                          updatedAt: '0001-01-01T00:00:00Z'
+                          updatedBy: 0
+                          deletedAt: null
+                          deletedBy: null
+                          name: ''
+                          RoleMatrix: null
+                        email: zyaicooldragneel@gmail.com
+                        password: >-
+                          $2a$10$DxqnRmx94sPvti7Dg6Nhr.AuRHELaiirMteqalQ0OPAbi9.UWwcby
+                        isVerification: false
+                        isBlock: false
+                        userSchool: null
+                        userStudents: null
+                      - id: 25
+                        createdAt: '2024-09-25T15:41:43.996773+07:00'
+                        createdBy: 1
+                        updatedAt: '2024-09-25T20:58:34.147156+07:00'
+                        updatedBy: 1
+                        deletedAt: null
+                        deletedBy: null
+                        roleId: 2
+                        username: syaichul123
+                        Role:
+                          id: 0
+                          createdAt: '0001-01-01T00:00:00Z'
+                          createdBy: 0
+                          updatedAt: '0001-01-01T00:00:00Z'
+                          updatedBy: 0
+                          deletedAt: null
+                          deletedBy: null
+                          name: ''
+                          RoleMatrix: null
+                        email: muhammad.syaichul@digiform.co.id
+                        password: >-
+                          $2a$10$XIReVoWs/pW71gSecv1cWuNMqCHBeR5/S3nNoWF.pvBaSf3S4yM72
+                        isVerification: false
+                        isBlock: false
+                        userSchool: null
+                        userStudents: null
+                      - id: 28
+                        createdAt: '2024-09-25T20:16:13.586755+07:00'
+                        createdBy: 1
+                        updatedAt: '2024-09-25T20:16:13.586755+07:00'
+                        updatedBy: 1
+                        deletedAt: null
+                        deletedBy: null
+                        roleId: 2
+                        username: syaichul1234
+                        Role:
+                          id: 0
+                          createdAt: '0001-01-01T00:00:00Z'
+                          createdBy: 0
+                          updatedAt: '0001-01-01T00:00:00Z'
+                          updatedBy: 0
+                          deletedAt: null
+                          deletedBy: null
+                          name: ''
+                          RoleMatrix: null
+                        email: muhammad.syaichull@digiform.co.id
+                        password: >-
+                          $2a$10$2uGU6DJgFE430D3O9oPM8.G5jgiNCBRWzqAExzsXn2GmdzklM/Gqe
+                        isVerification: false
+                        isBlock: false
+                        userSchool: null
+                        userStudents: null
+                      - id: 29
+                        createdAt: '2024-09-26T14:51:28.747681+07:00'
+                        createdBy: 24
+                        updatedAt: '2024-09-26T14:51:28.747681+07:00'
+                        updatedBy: 24
+                        deletedAt: null
+                        deletedBy: null
+                        roleId: 3
+                        username: syaichul12356
+                        Role:
+                          id: 0
+                          createdAt: '0001-01-01T00:00:00Z'
+                          createdBy: 0
+                          updatedAt: '0001-01-01T00:00:00Z'
+                          updatedBy: 0
+                          deletedAt: null
+                          deletedBy: null
+                          name: ''
+                          RoleMatrix: null
+                        email: muhammad.syaichullll@digiform.co.id
+                        password: >-
+                          $2a$10$Yy54HGX3n1meiVhxcBFcyO8aiHNGSsMt.A16TfFWz6lldPD.UkIyW
+                        isVerification: false
+                        isBlock: false
+                        userSchool: null
+                        userStudents: null
+        '401':
+          description: Unauthorized
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 07:15:33 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '36'
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: get all data - error expired token
+                  value:
+                    error: Invalid or expired token
+                example-1:
+                  summary: get all data - error user must login
+                  value:
+                    error: Please Login
+  /api/v1/user/detail/29:
+    get:
+      tags:
+        - user
+      summary: get data
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 06:28:58 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '2344'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                id: 29
+                createdAt: '2024-09-26T14:51:28.747681+07:00'
+                createdBy: 24
+                updatedAt: '2024-09-26T14:51:28.747681+07:00'
+                updatedBy: 24
+                deletedAt: null
+                deletedBy: null
+                roleId: 3
+                username: syaichul12356
+                Role:
+                  id: 3
+                  createdAt: '2024-09-17T15:10:54.792988+07:00'
+                  createdBy: 0
+                  updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                  updatedBy: 0
+                  deletedAt: null
+                  deletedBy: null
+                  name: Tata Usaha
+                  RoleMatrix:
+                    - id: 15
+                      createdAt: '2024-09-17T15:10:54.792988+07:00'
+                      createdBy: 0
+                      updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                      updatedBy: 0
+                      deletedAt: null
+                      deletedBy: null
+                      roleId: 3
+                      pageName: login
+                      pageCode: A002
+                      isCreate: false
+                      isRead: true
+                      isUpdate: false
+                      isDelete: false
+                    - id: 16
+                      createdAt: '2024-09-17T15:10:54.792988+07:00'
+                      createdBy: 0
+                      updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                      updatedBy: 0
+                      deletedAt: null
+                      deletedBy: null
+                      roleId: 3
+                      pageName: dashboard jenis tagihan
+                      pageCode: A010
+                      isCreate: true
+                      isRead: true
+                      isUpdate: true
+                      isDelete: true
+                    - id: 17
+                      createdAt: '2024-09-17T15:10:54.792988+07:00'
+                      createdBy: 0
+                      updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                      updatedBy: 0
+                      deletedAt: null
+                      deletedBy: null
+                      roleId: 3
+                      pageName: tambah jenis tagihan
+                      pageCode: A011
+                      isCreate: true
+                      isRead: false
+                      isUpdate: false
+                      isDelete: false
+                    - id: 18
+                      createdAt: '2024-09-17T15:10:54.792988+07:00'
+                      createdBy: 0
+                      updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                      updatedBy: 0
+                      deletedAt: null
+                      deletedBy: null
+                      roleId: 3
+                      pageName: edit jenis tagihan
+                      pageCode: A012
+                      isCreate: false
+                      isRead: false
+                      isUpdate: true
+                      isDelete: false
+                email: muhammad.syaichullll@digiform.co.id
+                password: $2a$10$Yy54HGX3n1meiVhxcBFcyO8aiHNGSsMt.A16TfFWz6lldPD.UkIyW
+                isVerification: false
+                isBlock: false
+                userSchool:
+                  id: 3
+                  createdAt: '2024-09-26T14:51:28.751331+07:00'
+                  createdBy: 0
+                  updatedAt: '2024-09-26T14:51:28.751331+07:00'
+                  updatedBy: 0
+                  deletedAt: null
+                  deletedBy: null
+                  schoolId: 1
+                  userId: 29
+                  school:
+                    id: 1
+                    createdAt: '2024-09-24T16:51:05.693078+07:00'
+                    createdBy: 0
+                    updatedAt: '2024-09-24T16:51:05.693078+07:00'
+                    updatedBy: 0
+                    deletedAt: null
+                    deletedBy: null
+                    npsn: 0
+                    schoolCode: SC001
+                    schoolName: Sekolah A
+                    schoolProvince: ''
+                    schoolCity: ''
+                    schoolPhone: 0
+                    schoolAddress: ''
+                    schoolMail: mail@mail.com
+                    schoolFax: ''
+                    schoolLogo: ''
+                    userSchools: null
+                  user: null
+                userStudents: null
+        '401':
+          description: Unauthorized
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 07:18:24 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '36'
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: get data - error expired token
+                  value:
+                    error: Invalid or expired token
+                example-1:
+                  summary: get data - error user must login
+                  value:
+                    error: Please Login
+        '404':
+          description: Not Found
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 06:29:29 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '26'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                error: Data not found
+  /api/v1/user/getByEmail:
+    get:
+      tags:
+        - user
+      summary: get data by email
+      parameters:
+        - name: email
+          in: query
+          schema:
+            type: string
+          example: muhammad.syaichul99@gmail.com
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 06:34:44 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '2886'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                id: 1
+                createdAt: '2024-09-18T15:53:16.994313+07:00'
+                createdBy: 0
+                updatedAt: '2024-09-18T15:53:16.994313+07:00'
+                updatedBy: 0
+                deletedAt: null
+                deletedBy: null
+                roleId: 1
+                username: syaichul99
+                Role:
+                  id: 1
+                  createdAt: '2024-09-17T15:10:54.792988+07:00'
+                  createdBy: 0
+                  updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                  updatedBy: 0
+                  deletedAt: null
+                  deletedBy: null
+                  name: Super Admin
+                  RoleMatrix:
+                    - id: 1
+                      createdAt: '2024-09-17T15:10:54.792988+07:00'
+                      createdBy: 0
+                      updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                      updatedBy: 0
+                      deletedAt: null
+                      deletedBy: null
+                      roleId: 1
+                      pageName: login
+                      pageCode: A002
+                      isCreate: false
+                      isRead: true
+                      isUpdate: false
+                      isDelete: false
+                    - id: 2
+                      createdAt: '2024-09-17T15:10:54.792988+07:00'
+                      createdBy: 0
+                      updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                      updatedBy: 0
+                      deletedAt: null
+                      deletedBy: null
+                      roleId: 1
+                      pageName: registrasi
+                      pageCode: A001
+                      isCreate: true
+                      isRead: false
+                      isUpdate: false
+                      isDelete: false
+                    - id: 3
+                      createdAt: '2024-09-17T15:10:54.792988+07:00'
+                      createdBy: 0
+                      updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                      updatedBy: 0
+                      deletedAt: null
+                      deletedBy: null
+                      roleId: 1
+                      pageName: dashboard akun
+                      pageCode: A003
+                      isCreate: true
+                      isRead: true
+                      isUpdate: true
+                      isDelete: true
+                    - id: 4
+                      createdAt: '2024-09-17T15:10:54.792988+07:00'
+                      createdBy: 0
+                      updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                      updatedBy: 0
+                      deletedAt: null
+                      deletedBy: null
+                      roleId: 1
+                      pageName: tambah akun user
+                      pageCode: A004
+                      isCreate: true
+                      isRead: false
+                      isUpdate: false
+                      isDelete: false
+                    - id: 5
+                      createdAt: '2024-09-17T15:10:54.792988+07:00'
+                      createdBy: 0
+                      updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                      updatedBy: 0
+                      deletedAt: null
+                      deletedBy: null
+                      roleId: 1
+                      pageName: edit akun user
+                      pageCode: A005
+                      isCreate: false
+                      isRead: false
+                      isUpdate: true
+                      isDelete: false
+                    - id: 6
+                      createdAt: '2024-09-17T15:10:54.792988+07:00'
+                      createdBy: 0
+                      updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                      updatedBy: 0
+                      deletedAt: null
+                      deletedBy: null
+                      roleId: 1
+                      pageName: dashboard siswa
+                      pageCode: A006
+                      isCreate: true
+                      isRead: true
+                      isUpdate: true
+                      isDelete: true
+                    - id: 7
+                      createdAt: '2024-09-17T15:10:54.792988+07:00'
+                      createdBy: 0
+                      updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                      updatedBy: 0
+                      deletedAt: null
+                      deletedBy: null
+                      roleId: 1
+                      pageName: tambah siswa baru
+                      pageCode: A007
+                      isCreate: true
+                      isRead: false
+                      isUpdate: false
+                      isDelete: false
+                    - id: 8
+                      createdAt: '2024-09-17T15:10:54.792988+07:00'
+                      createdBy: 0
+                      updatedAt: '2024-09-17T15:10:54.792988+07:00'
+                      updatedBy: 0
+                      deletedAt: null
+                      deletedBy: null
+                      roleId: 1
+                      pageName: edit informasi siswa
+                      pageCode: A008
+                      isCreate: false
+                      isRead: false
+                      isUpdate: true
+                      isDelete: false
+                email: muhammad.syaichul99@gmail.com
+                password: $2a$10$DxqnRmx94sPvti7Dg6Nhr.AuRHELaiirMteqalQ0OPAbi9.UWwcby
+                isVerification: true
+                isBlock: false
+                userSchool: null
+                userStudents: null
+        '404':
+          description: Not Found
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 06:35:06 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '26'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                error: Data not found
+  /v1/user/generateTokenChangePassword:
+    get:
+      tags:
+        - user
+      summary: generate token change password
+      parameters:
+        - name: email
+          in: query
+          schema:
+            type: string
+          example: kasir@gmail.com
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 06:36:25 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '93'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: >-
+                  Change password link has sended to your email, please
+                  imidiately checking that.
+        '404':
+          description: Not Found
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 06:37:13 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '46'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                error: Failed to send verification email.
+  /api/v1/user/verifyTokenChangePassword:
+    get:
+      tags:
+        - user
+      summary: verify token change password
+      parameters:
+        - name: token
+          in: query
+          schema:
+            type: string
+          example: >-
+            enlhaWNvb2xkcmFnbmVlbEBnbWFpbC5jb206MTcyNzY3ODE4Mw%3D%3D%3A7D1qIcPC1l92g4A9f4eWePhJCIc1OCzMOvCQ%2BOWrC58%3D
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 06:42:49 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '29'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Token is valid.
+        '500':
+          description: Internal Server Error
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 06:40:40 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '47'
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: verify token change password - error link expired
+                  value:
+                    error: Link has expired, please try again.
+                example-1:
+                  summary: verify token change password - error token format
+                  value:
+                    error: invalid token format
+  /v1/user/create:
+    post:
+      tags:
+        - user
+      summary: create user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: msyaichul
+                email: muhammad.syaichul2@digiform.co.id
+                roleId: 2
+                schoolId: 1
+                Password: Test1234
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 06:57:49 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '625'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                data:
+                  id: 30
+                  createdAt: '2024-09-30T13:57:47.0399793+07:00'
+                  createdBy: 1
+                  updatedAt: '2024-09-30T13:57:47.0399793+07:00'
+                  updatedBy: 1
+                  deletedAt: null
+                  deletedBy: null
+                  roleId: 3
+                  username: syaichul123568
+                  Role:
+                    id: 0
+                    createdAt: '0001-01-01T00:00:00Z'
+                    createdBy: 0
+                    updatedAt: '0001-01-01T00:00:00Z'
+                    updatedBy: 0
+                    deletedAt: null
+                    deletedBy: null
+                    name: ''
+                    RoleMatrix: null
+                  email: muhammad.syaichulllll@digiform.co.id
+                  password: $2a$10$udgX4ERotuSsomA9DZ.wSuTo3p6oXw.AlwFP8gYELTcWJGDlmm.IW
+                  isVerification: false
+                  isBlock: false
+                  userSchool: null
+                  userStudents: null
+                message: Data berhasil disimpan.
+        '401':
+          description: Unauthorized
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 07:21:38 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '24'
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: create user - error user must login
+                  value:
+                    error: Please Login
+                example-1:
+                  summary: create user - error token expired
+                  value:
+                    error: Invalid or expired token
+        '500':
+          description: Internal Server Error
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 06:45:32 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '32'
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: create user - duplicate username
+                  value:
+                    error: Username duplicated.
+                example-1:
+                  summary: create user - duplicate email
+                  value:
+                    error: Email has already been registered.
+                example-2:
+                  summary: create user - error password length
+                  value:
+                    error: Password Minimum length is 8 char.
+                example-3:
+                  summary: create user - error password not contain Uppercase letter
+                  value:
+                    error: Password must contain at least one uppercase letter.
+                example-4:
+                  summary: create user - error password not contain number
+                  value:
+                    error: Password must contain at least one number.
+                example-5:
+                  summary: create user - error password not contain lowercase letter
+                  value:
+                    error: Password must contain at least one lowercase letter.
+  /api/v1/user/selfRegistration:
+    post:
+      tags:
+        - user
+      summary: self registrasion
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: zyaicool1
+                email: zyaicooldragneel@gmail.com
+                roleId: 0
+                Password: Test1234
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 06:58:24 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '616'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                data:
+                  id: 32
+                  createdAt: '2024-09-30T13:58:23.1241875+07:00'
+                  createdBy: 0
+                  updatedAt: '2024-09-30T13:58:23.1241875+07:00'
+                  updatedBy: 0
+                  deletedAt: null
+                  deletedBy: null
+                  roleId: 2
+                  username: syaichul123561
+                  Role:
+                    id: 0
+                    createdAt: '0001-01-01T00:00:00Z'
+                    createdBy: 0
+                    updatedAt: '0001-01-01T00:00:00Z'
+                    updatedBy: 0
+                    deletedAt: null
+                    deletedBy: null
+                    name: ''
+                    RoleMatrix: null
+                  email: zyaicooldragneel1@gmail.com
+                  password: $2a$10$gLAri/scVMQ64fg6Y9X8U.ufXenHUrm0zyjRkzmKKdbfJhCnoBa0S
+                  isVerification: false
+                  isBlock: false
+                  userSchool: null
+                  userStudents: null
+                message: Data berhasil disimpan.
+        '500':
+          description: Internal Server Error
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 06:49:40 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '46'
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: self registrasion - error duplicate email
+                  value:
+                    error: Email has already been registered.
+                example-1:
+                  summary: self registrasion - duplicate username
+                  value:
+                    error: Username duplicated.
+                example-2:
+                  summary: self registrasion - error password length
+                  value:
+                    error: Password Minimum length is 8 char.
+                example-3:
+                  summary: self registrasion - error not contain uppercase letter
+                  value:
+                    error: Password must contain at least one uppercase letter.
+                example-4:
+                  summary: self registrasion - error not contain lowercase letter
+                  value:
+                    error: Password must contain at least one lowercase letter.
+                example-5:
+                  summary: self registrasion - error not contain number
+                  value:
+                    error: Password must contain at least one number.
+  /api/v1/user/verifyEmail:
+    put:
+      tags:
+        - user
+      summary: verify email
+      requestBody:
+        content: {}
+      parameters:
+        - name: token
+          in: query
+          schema:
+            type: string
+          example: >-
+            enlhaWNvb2xkcmFnbmVlbEBnbWFpbC5jb206MTcyNzY3ODE4Mw%3D%3D%3A7D1qIcPC1l92g4A9f4eWePhJCIc1OCzMOvCQ%2BOWrC58%3D
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 07:03:25 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '37'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Email has verification.
+        '500':
+          description: Internal Server Error
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 07:03:41 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '32'
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: verify email - error token format
+                  value:
+                    error: invalid token format
+                example-1:
+                  summary: verify email - error link expired
+                  value:
+                    error: Link has expired, please try again.
+  /v1/user/edit/35:
+    put:
+      tags:
+        - user
+      summary: update user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: 5czUy
+                roleId: 2
+                status: Tidak Aktif
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 07:33:29 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '617'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                data:
+                  id: 29
+                  createdAt: '2024-09-26T14:51:28.747681+07:00'
+                  createdBy: 24
+                  updatedAt: '2024-09-30T14:33:29.4189496+07:00'
+                  updatedBy: 1
+                  deletedAt: null
+                  deletedBy: null
+                  roleId: 3
+                  username: test1234
+                  Role:
+                    id: 0
+                    createdAt: '0001-01-01T00:00:00Z'
+                    createdBy: 0
+                    updatedAt: '0001-01-01T00:00:00Z'
+                    updatedBy: 0
+                    deletedAt: null
+                    deletedBy: null
+                    name: ''
+                    RoleMatrix: null
+                  email: muhammad.syaichullll@digiform.co.id
+                  password: $2a$10$798cX/9KtEkz05WeNhHBUOWrgPI6yrN6KX3FusxpYlp0WGCd3qWIG
+                  isVerification: false
+                  isBlock: false
+                  userSchool: null
+                  userStudents: null
+                message: Data berhasil dirubah.
+        '401':
+          description: Unauthorized
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 07:08:39 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '36'
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: update user - error expired token
+                  value:
+                    error: Invalid or expired token
+                example-1:
+                  summary: update user - error user must login
+                  value:
+                    error: Please Login
+        '500':
+          description: Internal Server Error
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 07:09:06 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '27'
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: update user - error user not found
+                  value:
+                    error: User not found.
+                example-1:
+                  summary: update user - error username duplicate
+                  value:
+                    error: Username duplicated.
+                example-2:
+                  summary: update user - error not contain uppercase letter
+                  value:
+                    error: Password must contain at least one uppercase letter.
+                example-3:
+                  summary: update user - error not contain lowercase letter
+                  value:
+                    error: Password must contain at least one lowercase letter.
+                example-4:
+                  summary: update user - not contain number
+                  value:
+                    error: Password must contain at least one number.
+  /v1/user/changePassword:
+    put:
+      tags:
+        - user
+      summary: change password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                Password: Test12345
+      parameters:
+        - name: token
+          in: query
+          schema:
+            type: string
+          example: >-
+            a2FzaXJAZ21haWwuY29tOjE3Mjg4OTUzNjQ%3D%3A1aAKILO1MU88%2Bjr455yfH%2FjeENnpY3E%2FBkvf3wzGniU%3D
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 07:32:09 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '38'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Change password success.
+        '500':
+          description: Internal Server Error
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 07:24:55 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '27'
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: change password - error user not found
+                  value:
+                    error: User not found.
+                example-1:
+                  summary: change password - error not contain uppercase letter
+                  value:
+                    error: Password must contain at least one uppercase letter.
+                example-2:
+                  summary: change password - error not contain lowercase letter
+                  value:
+                    error: Password must contain at least one lowercase letter.
+                example-3:
+                  summary: change password - error con contain number
+                  value:
+                    error: Password must contain at least one number.
+  /api/v1/user/delete/29:
+    delete:
+      tags:
+        - user
+      summary: delete user
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 07:35:35 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '36'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Data berhasil dihapus.
+        '401':
+          description: Unauthorized
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 07:33:55 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '24'
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: delete user - error user must login
+                  value:
+                    error: Please Login
+                example-1:
+                  summary: delete user - error token expired
+                  value:
+                    error: Invalid or expired token
+        '404':
+          description: Not Found
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 07:34:33 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '26'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                error: Data not found
+  /v1/user/upload:
+    post:
+      tags:
+        - user
+      summary: upload data user
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/user/getFileExcel:
+    get:
+      tags:
+        - user
+      summary: download file format import
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Tue, 08 Oct 2024 12:19:30 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: >-
+                  application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+            Content-Disposition:
+              schema:
+                type: string
+                example: attachment;filename=import_User_data.xlsx
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: "PK\x03\x04\x14\0\b\0\b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x13\0\0\0[Content_Types].xml��ώ�0\x10��\n<E�+���\x10J�\a�\x1Ca%�\a0�$�j{��ْ}{�d���E-�%s�|��>M��N)V; \x0E�[u�7���Ї<���������^5��\x05��R�ܪQ��7��\bɲ�\x02yJ�GJVX#\r�X��\x03�7��[�0\vd�e�P]�\x11z�\x10��4\t�K\x10YU\x1F�ř�*[J\f�J�lvٿ��O\x04M\x10�\x1D\x1EC��S��k�\x13� j^9Nz\x19�u\aD�CugI��\x04�2S42B��y���x�\x1D�>8��\x1E\x12d�K�^}\x0F<�fy��\x17C�\x10X�#����Г\x1D~\"m\x7F n�m1O�lȧ�xtw���-�b\x15�Oă�\va\x01�pf\x1F�<�e\\~\x13\x7F\x16�\x7F��s/\x0E\t�W�\x7FZ����\x06���\x7F\x13\ny��������Y�Sݯ\0\0\0��PK\a\b���|U\x01\0\0�\x04\0\0PK\x03\x04\x14\0\b\0\b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\v\0\0\0_rels/.rels���J�0\x10\x06���)B��t�\x0F\"��^D؛H}��L��$\x13&�Ʒ\x17��Ŋ�80|ߏ�x�1�\x17��1i�oZ) Yt>�Z>�w�ky��\x1D\x1F \x18����s\x115�T����R�N\x10Mi0C�1\fH�pi�F����\b�жW�.3d��\x14g�%��\x7F)zC#��\x0E�=a.����\x18���2��\x15��[�E�\x1C!�J��ʐ\x1C�]&�@��\x03�.E�Ê�\"�6�ϳ�\bl�a󙺙���ՠ^��'�y\e����\x1F�e��t�\x01\0\0��PK\a\b��{��\0\0\0d\x02\0\0PK\x03\x04\x14\0\b\0\b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x10\0\0\0docProps/app.xml��?K\x041\x10\x05��O�����B���\x10��Z��K2{7�̄�xD?���Y[>\x1E�x�\x1Fz��\x19������\r�Q\x12�qv�����\x1D\x95\x7FiR�\x19�\x0E�d�ٝ��\x1E@�\t˪�T�^�&�����#ȶQ�\a��\x05��f�n\x01�!'L��\v�\x1Fq\x7F���I��>}[>*�\v~\x11[�B\x05���\x12�}���j$\x1C�ex�\x113}��������\x15\0\0��PK\a\b�8 \t�\0\0\0 \x01\0\0PK\x03\x04\x14\0\b\0\b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x11\0\0\0docProps/core.xml��MK\x031\x10����%��ɶP4��A�IA��x\vɴ\rn>HR7�{��V�M�i�g\x1E�$|QlW}aLƻ9i\eJ*t�k�6s�Zַd!n�\nL����\a��`���\\b*��6��\0�ڢ���\x01]���G+sj|�@��Sn\x10&���b�Zf\t{a\x1DF#9*�\x1A�a\x17�A�\x15`�\x16]N�6-�ٌѦ�\vCrAZ��\x03^EO�H�dF�����\x0E��\x16ޟ\x1E_���ƥ,�B\"�VLE��GQv�p�\x18�c��\0uU�a�.��mz��Z\x12�\x7F�����lE)\e����k�,�^�����$\x10\x1C����\t\0\0��PK\a\bE�@�\x10\x01\0\0\x1C\x02\0\0PK\x03\x04\x14\0\b\0\b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x1A\0\0\0xl/_rels/workbook.xml.rels�пj�@\x10����\x14��?G/!��^\x13\x02�&�\x01\x16\x1D�����L\x12��\x03\x06�G����e��|��8y�>)����\"�AQhcg�P�{���\x11����\x16\e\x03\e;���\v\\�\x11\x19�\x10�5�5gq�0y���p\x16Ӏ�n�z <��\x03�u\x03ꫦ:u\x15�SW�jt\x1AH*���̆H\x18��&�@5�����}o[z�퇧 7\x04��\0�\x12ט۴�Bc�8�=?�m��\x05#�<���~���Mt��pr�F'��$�0�\x7F�u�/�j��;\0\0��PK\a\bq��j�\0\0\0�\x02\0\0PK\x03\x04\x14\0\b\0\b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x14\0\0\0xl/sharedStrings.xmld��J\x041\f��OQzw2\n�H�{\x10=zp�\a\b�q��$c��<�x\x10e=~�?_�m\\�'5+*S�\x1A�\x18Hf=\x169M���ty\x17w�\"�yظ�Mqq_�\x01l^��\x06]I6�o�\x18�\x06m'��\x11\x1Em!r�p=���X$�Y��\x14ob�R>:=�윬���\x19\x19ËVJ�9�7�\t{z׊�y;\x185A��yd,�\x1C����W���W\0\0\0��PK\a\b*[�\e�\0\0\0\x06\x01\0\0PK\x03\x04\x14\0\b\0\b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\r\0\0\0xl/styles.xml��]��(\x17���_�|?c�&�Ld�zժR��j�v��\x12�\x134|X������+p��qf�8�b�c�\x03\x1C·I��r\x06�Di*E���,\x01D`YQ�/��~|��$\x1F���ڜ\x18�~ �\0`9\x13�H\x0E�4�4��@8���!�rVKő��R�S�(�*��8K\x17Y�N9�\"�\b[��@d]SL>K�r\"LG!�\x10Q��Q�!�P�{��\rŭ6�_A�\x18b���T쯭\x13���\a�L\0Tj.�s'\v$ɣ��\x12%y�\f�QFͩgU{>\x03UQ�W��\x106�8L�gR}B��&5t\x0E��ش��\x10;��#7\x7Fa�(�5_T�!C��\aڄ%VQA��k��GE��5\x12G�\x10�\x15\x03�M\x0E�,\n�\x1F}�;��i\n�Q[ϑzn��\v_���\x1EA&\x1CN��Z��\x1EK~�HJ,&W�µ����\x19\n    <oKKC��Z�u}�\r=��!��f�m�kcy$�\t�ɓ����N��\e\x10?��A����T�'$H�5lށ�Ġ\n\x19�b)\f\x11�ǩ\t�)̕�\x13��_��b�Yd�0)�O�����!�5\x14\x19/��1��Z3�j*�\x7FC��9]d0�,6p\x197�s\x12s\x13{H7�bRr�\x0F��բ�f�Ƌj�e�l��c!����>^L�ƛ�O\x160{�PX�D�$\x16?7��\"\x11�ܣ�߼��\\����\td\x0F�\\V�y,�b�^���U\x1C�Y`�Bx�gp1��\x10�pdc\vW�I~Z#TdҞp��\"G���\a�b&k\x15X�\x01�a&l\x1D`\x1F\x06X�'�\x01[\x0E��\x1E1�V\x03l}3lx\x7FP\x0F7�\x1E\x06��f�f�=�\f{\x1C`0��\x06�\x11\x0Eގ�#��0\x18�Fq\0o\x0F\x048��ؤ�\x16n\x14\v���\b7D\x03�\e\r�i�]ߐ���\x19����^H�v�\x14\t�K�_L\0�K�_\n�u_/�5\x14T�\x01�|\x01_���+�3?�Y\eX\x05�Z\0�>\0����\x15�j\r�z\0Vm�U��9��@wq]���X���w\r�\n\x01��[��@�c����\0��n.�\x12�G\x01�\bǑ\x17�c��Jl��wA�\x1D��\x1C��q8\x10ʷ�vc�o�ƛ􎬶-������˲\f�����\x7F�Mʼ��h�e+L������/pD�H�\x13��W�cɤ\x02�@8�:�^R�\x02q�u��\x18�)�9a�׈Sv�\x1E.��\x13��\x1F��t�ה�0\t��\tʼA�\x10%�P�����&E\"� \x0E7��`��\eսB'�X���o��wRUD]\x18�\x13�9#��zwSt\x7Fp��w#�2O�u'����Ӿ�޲�@n�Q���\e��1a�91�\x18��@��\v7_�\"�\x12�l�7)c�f��~�yjk�Q#bǿ\x19\rl=\x1D#��`\x17#\x04)p�Q$\x7F�c+\e0`�Rf�\bР0n�2��0u��\t�ܸlu9l���Ԩe�\x1E��\x0F�dh\x7Fs[\x06ס׏�(���\a�h˽��p1\x11��-�\v\0\0��PK\a\b��\t;�\x04\0\0�\x15\0\0PK\x03\x04\x14\0\b\0\b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x13\0\0\0xl/theme/theme1.xml��o�6\x14���+\b�W�?d�A�\"��vk�\x16Mڡ�g���P�@�I|\e��.\x03\x06t�.\x03v�a\x18V`\x05V�?&@���#\x06�HL�\x12\x13�.V\fM\x0E���y��\x1E)�X�~�4a�HE\x05�q뚋\x11�\b)�|��p��\x06����u��1I\b:M\x18W���X�t�qT\x10�\x04�5�\x12~����\thuM��\t%�P\x1E%�i�n�I�r\\��*��Ni@F\"�%��\x89$\f4\x15\\�4U\x18qH�����0\x13��Υ�2�q*\e\b�<\br�&�ۆG�쏚�!��\x18��O(\x0F��!9�\x181PzȤ���\ao]w΍��\x12g����a���x(��{����E��u{�%QL�A�E�Ud������\"�-\x04\x01�V\x13�v\x06;#o\x153�˚�����jB���\x15t��~���\x02�����p�\x1C+hw�z5U����&�[��\x15��n���&4��\x19�G+���:Ú\"]XO\x05�UK\x0E���^%\x17�c���\x15�M�=��B�\x05���\x01M9��L! >\x1E\x02�\x13I�\x1E�b�Q\n\\(�c��ݎ��\x7F��UY��A所ᦘ#�?xje\"P�\"�\n$M��?O�c���˗gO^�=����ӳ'���ʴ\v�\x15�\x16�������??|�����7Ͼ�s��^����?��J8]�����/�����~~f��%LL�&D�;�\x04�\x17\tp[@2�oG\x1E�@+$�\"\x01\v���\npg\x0E�f�C��\x7F()\x0Fm����J.\a��ij\x01n�I\x05�\x17��\biM�v��L{�#�(93��\x03\x1C�4\r�6��,�IBm!�1��q�\x01�\x10\x11N4���\x11!\x16�\x11��u٧�\x14JL5zD�\x0EPk\t\x0F�D�÷h\x02\f�6�1Tj��\x10�\bf\v7\"�U\x02x\x04�\x16��J�o�LCb�\b\x12f\x12{�c[\x12\as\x19T\x16Li\t<\"L�ݐ(ec��y%����};��yR%��G6b\x0F�0��8\x1AƐ�֜(�M�3u$\x04\x03tOh�8Q}b�{�(�K��CJ��\x1DC\x0Fh\x14�o�lf&m�&\x11��bΦ@*�����P~i�[jo�\x7F���f���\x0E���mKj}З\e�e����5�\x19�GxlC>v����c��\x17���u����{֢M���g���#ܔ2v���<�\x12��c�X~�C\x17\x1F\x1E�x�$v�\0\x15�HB~���_P\x1D\x1FĐ\x12\x1F��\b�*]G\n�B��ō��\t6K�EX��Z�k\x12'\a@/�]�b\\S���^�\x1Ct\f��]�L\x01^���\"�`U\x11�\x1A\x11���D��u�\x18Ԩ�h�T8ƪ0�\x11���^�P�T\0���:\x15���}���YM�]�ޠ{�\"_a�+\"��V\x15al�\x18B�<��\x1E\fꗺ]+���>��Y=\e\x18�ޡ\x13\x1F�:��Q\0���\f4FA��>Vٹ\n,�>\x0EtY�9YR��\bT\\��SE�\t�D\"F\x13\x1Fo����B[��w?\\q\x03�ë����d:%�n\x18Y��)]8��}G��F�4�\aqx�&l&�C�c���\n\x18R�/�\x19Ril�E\x15����Q��R]<���\x18ʎb\x1E����\v9F\x1E��嬜�\x12N��:����V��lh ��S��5yCU�^�W{�\r6.�\x12��\x10\fi\e��:�Қz�\x1A�!0��\x1A�ֶ��w�\x06˻�1����V�'\x13��$�#2�\x19�E��!�$�Z���\e����v4���o\0\0\0��PK\a\b���{}\x05\0\0e\x1C\0\0PK\x03\x04\x14\0\b\0\b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x0F\0\0\0xl/workbook.xml��Oo�0\f���\x14\x02 \t��r�a\e��\x10`]{V$:&�?�$7η\x1Flϫ�^zz4e��\x1EU>�βW���� V\x1C\x18z\x1D\f���?O?\x1E��X})o!^�!\\Y�O\x12���CQ$ݠSi\x15Z���u�N�\n�R�6�2�A��\x16k�w�S�a\"\x1C�g\x18��I㷠;�>O��Ve\n>5Ԧ���gpN�k�>��Z��L��}�\x02s�p��\x10�٢�^lgr/�\x1FЎt\f)�y���g�C^�\v!��UY���i�L��/�)\x16�U)\x7F7��H�\x01���\x1A�k�vd�\x04�٬9Te�`U���\x14YM6c\n        <EzU�.!�\x0E�\x19�Ug�S�n�$A�6\\���v�*\a}&��7����\x17�&�$p`�E}\e�\x172�\x19���v��D�4Y\x9E\v��2લX\f\x1A�5+��Z~\x0F�\06��Cr`�@FB<���x2k�J��>E6���z���M\a\v\a��\0\0\0��PK\a\b'�\x1Eȍ\x01\0\0�\x02\0\0PK\x03\x04\x14\0\b\0\b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x18\0\0\0xl/worksheets/sheet1.xml��Ko� \x10���\x15h�\rv�P\x15\x01Q�4joU_wb�c\x14`- q~~E\x1E�s�m�ǌf�b~p��1DC^B9)����6~#��{u�\x04su#z\n��\"&vp�G\tmJ݌�X��t�P���lC��\x14'\x146\n            <v\x01u}49˧E�ȝ6\x1EN\t��\fj\x1ASᒪ�C�N!\x01�N�|lM\x17A��8��>\v�HX��\x04\x1F\x1E�86�5�ǑfI���b�����\x0E��k�m�﵄\"\a\r���$��U?\x02���;�>�\x7FC�i���ap_~�MK��\x12�z\x16$�U\x16�\x12X��\a�U!�^\t^�����e̦�l9fw��u��\a�\x03\rKOE�pz�\x17\0\0��PK\a\b~%�W \x01\0\0-\x02\0\0PK\x01\x02\x14\0\x14\0\b\0\b\0\0\0\0\0���|U\x01\0\0�\x04\0\0\x13\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0[Content_Types].xmlPK\x01\x02\x14\0\x14\0\b\0\b\0\0\0\0\0��{��\0\0\0d\x02\0\0\v\0\0\0\0\0\0\0\0\0\0\0\0\0�\x01\0\0_rels/.relsPK\x01\x02\x14\0\x14\0\b\0\b\0\0\0\0\0�8 \t�\0\0\0 \x01\0\0\x10\0\0\0\0\0\0\0\0\0\0\0\0\0�\x02\0\0docProps/app.xmlPK\x01\x02\x14\0\x14\0\b\0\b\0\0\0\0\0E�@�\x10\x01\0\0\x1C\x02\0\0\x11\0\0\0\0\0\0\0\0\0\0\0\0\0�\x03\0\0docProps/core.xmlPK\x01\x02\x14\0\x14\0\b\0\b\0\0\0\0\0q��j�\0\0\0�\x02\0\0\x1A\0\0\0\0\0\0\0\0\0\0\0\0\0�\x04\0\0xl/_rels/workbook.xml.relsPK\x01\x02\x14\0\x14\0\b\0\b\0\0\0\0\0*[�\e�\0\0\0\x06\x01\0\0\x14\0\0\0\0\0\0\0\0\0\0\0\0\0*\x06\0\0xl/sharedStrings.xmlPK\x01\x02\x14\0\x14\0\b\0\b\0\0\0\0\0��\t;�\x04\0\0�\x15\0\0\r\0\0\0\0\0\0\0\0\0\0\0\0\0\x1D\a\0\0xl/styles.xmlPK\x01\x02\x14\0\x14\0\b\0\b\0\0\0\0\0���{}\x05\0\0e\x1C\0\0\x13\0\0\0\0\0\0\0\0\0\0\0\0\0\f\f\0\0xl/theme/theme1.xmlPK\x01\x02\x14\0\x14\0\b\0\b\0\0\0\0\0'�\x1Eȍ\x01\0\0�\x02\0\0\x0F\0\0\0\0\0\0\0\0\0\0\0\0\0�\x11\0\0xl/workbook.xmlPK\x01\x02\x14\0\x14\0\b\0\b\0\0\0\0\0~%�W \x01\0\0-\x02\0\0\x18\0\0\0\0\0\0\0\0\0\0\0\0\0�\x13\0\0xl/worksheets/sheet1.xmlPK\x05\x06\0\0\0\0\n\0\n\0�\x02\0\0�\x14\0\0\0\0"
+  /v1/user/checkEmail:
+    get:
+      tags:
+        - user
+      summary: check email
+      parameters:
+        - name: email
+          in: query
+          schema:
+            type: string
+          example: zyaicooldragneel@gmail.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/user/checkUsername:
+    get:
+      tags:
+        - user
+      summary: check username
+      parameters:
+        - name: username
+          in: query
+          schema:
+            type: string
+          example: rumbur1234
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/billingType/getAllBillingType:
+    get:
+      tags:
+        - billing type
+      summary: get all data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: search
+          in: query
+          schema:
+            type: string
+          example: tes
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/billingType/detail/1:
+    get:
+      tags:
+        - billing type
+      summary: get data
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/billingType/create:
+    post:
+      tags:
+        - billing type
+      summary: create billing type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                billingTypeName: SPP
+                billingTypePeriod: bulanan
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/billingType/update/1:
+    put:
+      tags:
+        - billing type
+      summary: update billing type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                billingTypeName: tes1
+                billingTypePeriod: tes1
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6Im11aGFtbWFkLnN5YWljaHVsOTlAZ21haWwuY29tIiwicm9sZV9pZCI6MiwiZXhwIjoxNzI3MjUzMTU3fQ.mJMg4GojNP25pQYVFgVhailAIxJ61MtuKAMpF6cYvYg
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/billingType/delete/1:
+    delete:
+      tags:
+        - billing type
+      summary: delete billing type
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6Im11aGFtbWFkLnN5YWljaHVsOTlAZ21haWwuY29tIiwicm9sZV9pZCI6MiwiZXhwIjoxNzI3MjUzMTU3fQ.mJMg4GojNP25pQYVFgVhailAIxJ61MtuKAMpF6cYvYg
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/billing/getAllBilling:
+    get:
+      tags:
+        - billing
+      summary: get all data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: billingType
+          in: query
+          schema:
+            type: string
+        - name: bankAccountId
+          in: query
+          schema:
+            type: string
+        - name: sortBy
+          in: query
+          schema:
+            type: string
+          example: bankAccountName
+        - name: sortOrder
+          in: query
+          schema:
+            type: string
+          example: desc
+        - name: sort
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/billing/detail/69:
+    get:
+      tags:
+        - billing
+      summary: get data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/billing/generateInstallment/4:
+    get:
+      tags:
+        - billing
+      summary: generate installment
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/billing/create:
+    post:
+      tags:
+        - billing
+      summary: create billing
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                billingName: coba kelas
+                schoolYearId: 30
+                billingType: non-regular
+                schoolClassIds:
+                  - '64'
+                totalBill: 2
+                billingCode: aaaaa
+                billingAmount: 8710
+                bankAccountId: 94
+                description: ''
+                detailBillings:
+                  - detailBillingName: coba kelas - 1
+                    dueDate: '2024-11-01'
+                    amount: 4355
+                    key: 1
+                  - detailBillingName: coba kelas - 2
+                    dueDate: '2024-12-01'
+                    amount: 4355
+                    key: 2
+                schoolGradeId: 3
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            Bearer
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJlbWFpbCI6Im11aGFtbWFkLnN5YWljaHVsQGRpZ2lmb3JtLmNvLmlkIiwicm9sZV9pZCI6MiwiZXhwIjoxNzMwNDQ2NjExfQ.Ldns5sNsYuGw9nX3vH5-HtBbKO2q_uVDyKVq5MUl3ZM
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/billing/update/1:
+    put:
+      tags:
+        - billing
+      summary: update billing
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                billingName: tes billing
+                startDate: '2024-09-25'
+                endDate: '2024-10-25'
+                paymentType: cash
+                tenor: ''
+                billingAmount: 0
+                ppn: 0
+                discount: 0
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/billing/delete/7:
+    delete:
+      tags:
+        - billing
+      summary: delete billing
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/schoolYear/getAllSchoolYear:
+    get:
+      tags:
+        - school year
+      summary: get all data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '7'
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: sortBy
+          in: query
+          schema:
+            type: string
+          example: updatedAt
+        - name: sortOrder
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/schoolYear/detail/1:
+    get:
+      tags:
+        - school year
+      summary: get data
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6Im11aGFtbWFkLnN5YWljaHVsOTlAZ21haWwuY29tIiwicm9sZV9pZCI6MiwiZXhwIjoxNzI3MjUzMTU3fQ.mJMg4GojNP25pQYVFgVhailAIxJ61MtuKAMpF6cYvYg
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/schoolYear/create:
+    post:
+      tags:
+        - school year
+      summary: create school year
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                startDate: '2024-01-02'
+                endDate: '2025-01-08'
+                schoolYearName: 2024/2025
+                schoolId: 1
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6Im11aGFtbWFkLnN5YWljaHVsOTlAZ21haWwuY29tIiwicm9sZV9pZCI6MiwiZXhwIjoxNzI3MjUzMTU3fQ.mJMg4GojNP25pQYVFgVhailAIxJ61MtuKAMpF6cYvYg
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/schoolYear/update/4:
+    put:
+      tags:
+        - school year
+      summary: update school year
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                startDate: '2023-06-01'
+                endDate: '2024-06-30'
+                schoolYearName: 2023/2024
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6Im11aGFtbWFkLnN5YWljaHVsOTlAZ21haWwuY29tIiwicm9sZV9pZCI6MiwiZXhwIjoxNzI3MjUzMTU3fQ.mJMg4GojNP25pQYVFgVhailAIxJ61MtuKAMpF6cYvYg
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/schoolYear/delete/1:
+    delete:
+      tags:
+        - school
+      summary: delete school year
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6Im11aGFtbWFkLnN5YWljaHVsOTlAZ21haWwuY29tIiwicm9sZV9pZCI6MiwiZXhwIjoxNzI3MjUzMTU3fQ.mJMg4GojNP25pQYVFgVhailAIxJ61MtuKAMpF6cYvYg
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/schoolGrade/getAllSchoolGrade:
+    get:
+      tags:
+        - school grade
+      summary: get all data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6Im11aGFtbWFkLnN5YWljaHVsOTlAZ21haWwuY29tIiwicm9sZV9pZCI6MiwiZXhwIjoxNzI3MjUzMTU3fQ.mJMg4GojNP25pQYVFgVhailAIxJ61MtuKAMpF6cYvYg
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/schoolGrade/detail/1:
+    get:
+      tags:
+        - school grade
+      summary: get data
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6Im11aGFtbWFkLnN5YWljaHVsOTlAZ21haWwuY29tIiwicm9sZV9pZCI6MiwiZXhwIjoxNzI3MjUzMTU3fQ.mJMg4GojNP25pQYVFgVhailAIxJ61MtuKAMpF6cYvYg
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/schoolGrade/create:
+    post:
+      tags:
+        - school grade
+      summary: create school grade
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                schoolGradeName: tes
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6Im11aGFtbWFkLnN5YWljaHVsOTlAZ21haWwuY29tIiwicm9sZV9pZCI6MiwiZXhwIjoxNzI3MjUzMTU3fQ.mJMg4GojNP25pQYVFgVhailAIxJ61MtuKAMpF6cYvYg
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/schoolGrade/update/1:
+    put:
+      tags:
+        - school grade
+      summary: update school grade
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                schoolGradeName: tes1
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6Im11aGFtbWFkLnN5YWljaHVsOTlAZ21haWwuY29tIiwicm9sZV9pZCI6MiwiZXhwIjoxNzI3MjUzMTU3fQ.mJMg4GojNP25pQYVFgVhailAIxJ61MtuKAMpF6cYvYg
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/schoolClass/getAllSchoolClass:
+    get:
+      tags:
+        - school class
+      summary: get all data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6Im11aGFtbWFkLnN5YWljaHVsOTlAZ21haWwuY29tIiwicm9sZV9pZCI6MiwiZXhwIjoxNzI3MjUzMTU3fQ.mJMg4GojNP25pQYVFgVhailAIxJ61MtuKAMpF6cYvYg
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: sortBy
+          in: query
+          schema:
+            type: string
+        - name: sortOrder
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/schoolClass/detail/12:
+    get:
+      tags:
+        - school class
+      summary: get data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6Im11aGFtbWFkLnN5YWljaHVsOTlAZ21haWwuY29tIiwicm9sZV9pZCI6MiwiZXhwIjoxNzI3MjUzMTU3fQ.mJMg4GojNP25pQYVFgVhailAIxJ61MtuKAMpF6cYvYg
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/schoolClass/create:
+    post:
+      tags:
+        - school class
+      summary: create school class
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: "{\r\n    \"schoolId\":1,\r\n    \"schoolGradeId\":1,\r\n    \"prefixClassId\":1,\r\n    \"schoolMajorId\":1,\r\n    \"suffix\":\"tes\"\r\n    \"schoolGradeName\":\"X IPS 2\"\r\n}"
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/schoolClass/update/1:
+    put:
+      tags:
+        - school class
+      summary: update school class
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                schoolGradeId: 1
+                prefixClassId: 1
+                schoolMajorId: 1
+                suffix: tes
+                schoolClassName: tes1
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6Im11aGFtbWFkLnN5YWljaHVsOTlAZ21haWwuY29tIiwicm9sZV9pZCI6MiwiZXhwIjoxNzI3MjUzMTU3fQ.mJMg4GojNP25pQYVFgVhailAIxJ61MtuKAMpF6cYvYg
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/schoolClass/delete/13:
+    delete:
+      tags:
+        - school class
+      summary: delete school class
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6Im11aGFtbWFkLnN5YWljaHVsOTlAZ21haWwuY29tIiwicm9sZV9pZCI6MiwiZXhwIjoxNzI3MjUzMTU3fQ.mJMg4GojNP25pQYVFgVhailAIxJ61MtuKAMpF6cYvYg
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/school/getAllSchool:
+    get:
+      tags:
+        - school
+      summary: get all data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: sortBy
+          in: query
+          schema:
+            type: string
+        - name: sortOrder
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/school/detail/1:
+    get:
+      tags:
+        - school
+      summary: get data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6Im11aGFtbWFkLnN5YWljaHVsOTlAZ21haWwuY29tIiwicm9sZV9pZCI6MiwiZXhwIjoxNzI3MjUzMTU3fQ.mJMg4GojNP25pQYVFgVhailAIxJ61MtuKAMpF6cYvYg
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/school/create:
+    post:
+      tags:
+        - school
+      summary: create data school
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                schoolGradeId:
+                  type: integer
+                  example: '3'
+                npsn:
+                  type: integer
+                  example: '9999978'
+                schoolName:
+                  type: string
+                  example: SMA Harapan Jaya Selatan 9(ini test local BE ya)
+                schoolPhone:
+                  type: integer
+                  example: '082141262915'
+                schoolMail:
+                  type: string
+                  example: mail@mail.com
+                schoolProvince:
+                  type: string
+                  example: Jawa Timur
+                schoolCity:
+                  type: string
+                  example: Sidoarjo
+                schoolAddress:
+                  type: string
+                  example: Jl mendut
+                schoolLogo:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6Im11aGFtbWFkLnN5YWljaHVsOTlAZ21haWwuY29tIiwicm9sZV9pZCI6MiwiZXhwIjoxNzI3MjUzMTU3fQ.mJMg4GojNP25pQYVFgVhailAIxJ61MtuKAMpF6cYvYg
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/school/update/4:
+    put:
+      tags:
+        - school
+      summary: update school
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                schoolGradeId:
+                  type: integer
+                  example: '3'
+                npsn:
+                  type: integer
+                  example: '0'
+                schoolName:
+                  type: string
+                  example: SMA Harapan Jaya Selatan 1
+                schoolPhone:
+                  type: integer
+                  example: '082141262915'
+                schoolMail:
+                  type: string
+                  example: mail@mail.com
+                schoolProvince:
+                  type: string
+                  example: Jawa Timur
+                schoolCity:
+                  type: string
+                  example: Sidoarjo
+                schoolAddress:
+                  type: string
+                  example: Jl mendut
+                schoolLogo:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6Im11aGFtbWFkLnN5YWljaHVsOTlAZ21haWwuY29tIiwicm9sZV9pZCI6MiwiZXhwIjoxNzI3MjUzMTU3fQ.mJMg4GojNP25pQYVFgVhailAIxJ61MtuKAMpF6cYvYg
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/billingStudent/getAllBillingStudent:
+    get:
+      tags:
+        - billing student
+      summary: get all biller student
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: studentId
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: paymentType
+          in: query
+          schema:
+            type: string
+        - name: schoolGradeId
+          in: query
+          schema:
+            type: string
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: schoolClassId
+          in: query
+          schema:
+            type: string
+        - name: schoolId
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/billingStudent/detailBillingStudent:
+    get:
+      tags:
+        - billing student
+      summary: get detail billing student by student id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+        - name: studentId
+          in: query
+          schema:
+            type: integer
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/billingStudent/detailBillingByBillingStudentId/2:
+    get:
+      tags:
+        - billing student
+      summary: get detail billing student by id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/billingStudent/update/732:
+    put:
+      tags:
+        - billing student
+      summary: update detail billing
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                detailBillingName: Pembayaran ekskul silat  - 55
+                dueDate: '2024-11-01'
+                amount: 100000
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/transaction/midtrans/payment:
+    post:
+      tags:
+        - transaction > midtrans
+      summary: midtrans payment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                studentId: 1
+                billingStudentIds:
+                  - '2'
+                  - '3'
+                paymentMethodId: 13
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/transaction/midtrans/submitPayment:
+    post:
+      tags:
+        - transaction > midtrans
+      summary: midtrans payment Copy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                studentId: 9
+                billingId: 8
+                totalAmount: 120000
+                description: lunas
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/transaction/midtrans/checkPayment:
+    get:
+      tags:
+        - transaction > midtrans
+      summary: midtrans check payment
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: orderId
+          in: query
+          schema:
+            type: string
+          example: SCPAY-BT001-1729580969
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/transaction/create:
+    post:
+      tags:
+        - transaction
+      summary: payment kasir
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                studentId: 1
+                amountToPay: 100000
+                description: lunas
+                billingStudentIds:
+                  - '19'
+                discount: 0
+                discountType: '%'
+                changeAmount: 100000
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: ••••••
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/dashboard/parent:
+    get:
+      tags:
+        - dashbord
+      summary: dashboard parent
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/billingHistory/getAllBillingHistory:
+    get:
+      tags:
+        - payment history
+      summary: get all payment history
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: studentId
+          in: query
+          schema:
+            type: string
+        - name: paymentStatusCode
+          in: query
+          schema:
+            type: string
+        - name: paymentTypeId
+          in: query
+          schema:
+            type: string
+        - name: schoolYearId
+          in: query
+          schema:
+            type: string
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: userId
+          in: query
+          schema:
+            type: string
+        - name: sortBy
+          in: query
+          schema:
+            type: string
+        - name: sortOrder
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/billingHistory/detailBillingHistory:
+    get:
+      tags:
+        - payment history
+      summary: get detail payment history
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: transactionId
+          in: query
+          schema:
+            type: integer
+          example: '119'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/billingHistory/printInvoice/:
+    get:
+      tags:
+        - payment history
+      summary: download invoice
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: invoiceNumber
+          in: query
+          schema:
+            type: string
+          example: INV/SCP/14112400115
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/bankAccount/create:
+    post:
+      tags:
+        - bank account
+      summary: create bank account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                schoolId: 1
+                bankName: BTN
+                accountName: Jhon Law
+                accountNumber: '4444'
+                accountOwner: Sekolah
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            Bearer
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTczMDI2MjgxNH0.F2OzFPIpuSFglM3KREiXhfVPwWIsP4IYFQVR8P0qBFk
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/bankAccount/getListBankAccount:
+    get:
+      tags:
+        - bank account
+      summary: get all data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '2'
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/bankAccount/detail/27:
+    get:
+      tags:
+        - bank account
+      summary: get detail
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            Bearer
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTczMDI2MjgxNH0.F2OzFPIpuSFglM3KREiXhfVPwWIsP4IYFQVR8P0qBFk
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/bankAccount/update/27:
+    put:
+      tags:
+        - bank account
+      summary: update bank account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                bankName: '111'
+                accountName: Jhon Law
+                accountNumber: '9999999'
+                accountOwner: Sekolah
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            Bearer
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTczMDI2MjgxNH0.F2OzFPIpuSFglM3KREiXhfVPwWIsP4IYFQVR8P0qBFk
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/bankAccount/listBankName:
+    get:
+      tags:
+        - bank account
+      summary: get list bank name
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/prefixClass/getListPrefixClass:
+    get:
+      tags:
+        - prefix class
+      summary: get list prefix
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/prefixClass/create:
+    post:
+      tags:
+        - prefix class
+      summary: create prefix name
+      requestBody:
+        content: {}
+      parameters:
+        - name: schoold
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: prefixName
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/schoolMajor/getListSchoolMajor:
+    get:
+      tags:
+        - school major
+      summary: get list school major
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/schoolMajor/create:
+    post:
+      tags:
+        - school major
+      summary: create school major
+      requestBody:
+        content: {}
+      parameters:
+        - name: schoold
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: schoolMajorName
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/masterPaymentGateway/getAllConfig:
+    get:
+      tags:
+        - payment method
+      summary: get list payment method
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/login:
+    post:
+      tags:
+        - default
+      summary: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: admin.sekolah@gmail.com
+                password: Test1234
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 06:21:29 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '203'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                token: >-
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6Im11aGFtbWFkLnN5YWljaHVsOTlAZ21haWwuY29tIiwicm9sZV9pZCI6MSwiZXhwIjoxNzI3NzYzNjg5fQ.n3-auLtrhFIj7X6KlT7E8-niX3AnKGprWBla4L6CqBw
+        '401':
+          description: Unauthorized
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 06:22:47 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '85'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                error: >-
+                  Email/username atau password yang Anda masukkan salah.
+                  Silahkan coba lagi
+  /v1/auth:
+    get:
+      tags:
+        - default
+      summary: auth user
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 06:21:29 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '203'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                token: >-
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6Im11aGFtbWFkLnN5YWljaHVsOTlAZ21haWwuY29tIiwicm9sZV9pZCI6MSwiZXhwIjoxNzI3NzYzNjg5fQ.n3-auLtrhFIj7X6KlT7E8-niX3AnKGprWBla4L6CqBw
+        '401':
+          description: Unauthorized
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Mon, 30 Sep 2024 06:22:47 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '85'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                error: >-
+                  Email/username atau password yang Anda masukkan salah.
+                  Silahkan coba lagi
+  /v1/generateMasterData:
+    post:
+      tags:
+        - default
+      summary: generateMasterData
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/province:
+    get:
+      tags:
+        - default
+      summary: get data province
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/city:
+    get:
+      tags:
+        - default
+      summary: get data city
+      parameters:
+        - name: provinceId
+          in: query
+          schema:
+            type: integer
+          example: '11'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/health:
+    get:
+      tags:
+        - default
+      summary: check healty apps
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /assets/school/logo/1731388210.jpeg:
+    get:
+      tags:
+        - default
+      summary: get logo
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/schedule/checkFailedTransaction:
+    get:
+      tags:
+        - default
+      summary: schedule check failed payments
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: ••••••
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/schedule/sendDummyNotif:
+    get:
+      tags:
+        - default
+      summary: send dummy notif
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: ••••••
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/paymentType:
+    get:
+      tags:
+        - default
+      summary: get payment type
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: ••••••
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/paymentStatus:
+    get:
+      tags:
+        - default
+      summary: get payment status
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: ••••••
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
