@@ -1,0 +1,40 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="72" author="januar">
+        <createTable tableName="anouncements">
+            <column name="id" type="bigserial">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="school_id" type="int">
+                <constraints foreignKeyName="fk_school_id" references="schools(id)" />
+            </column>
+            <column name="hero_image" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="description" type="text">
+                <constraints nullable="true" />
+            </column>
+            <column name="type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="event_date" type="timestamp">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_at" type="timestamp">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_by" type="int" />
+            <column name="updated_at" type="timestamp" />
+            <column name="updated_by" type="int" />
+            <column name="deleted_at" type="timestamp" />
+            <column name="deleted_by" type="int" />
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="33" author="alif">
+        <createTable tableName="transaction_billing_histories">
+            <column name="id" type="bigserial">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="timestamptz"/>
+            <column name="created_by" type="int8"/>
+            <column name="updated_at" type="timestamptz"/>
+            <column name="updated_by" type="int8"/>
+            <column name="deleted_at" type="timestamptz"/>
+            <column name="deleted_by" type="int8"/>
+            <column name="transaction_billing_id" type="int8"/>
+            <column name="transaction_date" type="timestamptz"/>
+            <column name="transaction_amount" type="int8"/>
+            <column name="reference_number" type="text"/>
+            <column name="description" type="text"/>
+            <column name="transaction_type" type="text"/>
+        </createTable>
+
+        <addForeignKeyConstraint 
+            baseTableName="transaction_billing_histories" 
+            baseColumnNames="transaction_billing_id" 
+            referencedTableName="transaction_billings" 
+            referencedColumnNames="id" 
+            constraintName="fk_transaction_billings_transaction_billing_history"/>
+    </changeSet>
+
+</databaseChangeLog>

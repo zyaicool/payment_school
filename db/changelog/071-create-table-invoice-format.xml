@@ -1,0 +1,34 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="71" author="januar">
+        <createTable tableName="invoice_format">
+            <column name="id" type="bigserial">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="school_id" type="int">
+                <constraints foreignKeyName="fk_school_id" references="schools(id)" />
+            </column>
+            <column name="prefix" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="format" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="generated_invoice_format" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_at" type="timestamp">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_by" type="int" />
+            <column name="updated_at" type="timestamp" />
+            <column name="updated_by" type="int" />
+            <column name="deleted_at" type="timestamp" />
+            <column name="deleted_by" type="int" />
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="8" author="alif">
+        <createTable tableName="schools">
+            <column name="id" type="bigserial">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="timestamptz"/>
+            <column name="created_by" type="int8"/>
+            <column name="updated_at" type="timestamptz"/>
+            <column name="updated_by" type="int8"/>
+            <column name="deleted_at" type="timestamptz"/>
+            <column name="deleted_by" type="int8"/>
+            <column name="npsn" type="int8"/>
+            <column name="school_code" type="text"/>
+            <column name="school_name" type="text"/>
+            <column name="school_province" type="text"/>
+            <column name="school_city" type="text"/>
+            <column name="school_phone" type="int8"/>
+            <column name="school_address" type="text"/>
+            <column name="school_mail" type="text"/>
+            <column name="school_fax" type="text"/>
+            <column name="school_logo" type="text"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

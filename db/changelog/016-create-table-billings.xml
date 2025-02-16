@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="16" author="alif">
+        <createTable tableName="billings">
+            <column name="id" type="bigserial">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="timestamptz"/>
+            <column name="created_by" type="int8"/>
+            <column name="updated_at" type="timestamptz"/>
+            <column name="updated_by" type="int8"/>
+            <column name="deleted_at" type="timestamptz"/>
+            <column name="deleted_by" type="int8"/>
+            <column name="billing_number" type="text"/>
+            <column name="billing_name" type="text"/>
+            <column name="billing_type_id" type="int8"/>
+            <column name="school_grade_id" type="int8"/>
+            <column name="school_class_id" type="int8"/>
+            <column name="school_year_id" type="int8"/>
+            <column name="start_date" type="timestamptz"/>
+            <column name="end_date" type="timestamptz"/>
+            <column name="payment_type" type="text"/>
+            <column name="tenor" type="text"/>
+            <column name="billing_amount" type="int8"/>
+            <column name="ppn" type="int8"/>
+            <column name="discount" type="int8"/>
+            <column name="description" type="text"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

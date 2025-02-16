@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="43" author="januar">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="school_years"/>
+            <not>
+                <columnExists tableName="school_years" columnName="school_id"/>
+            </not>
+        </preConditions>
+
+        <!-- Adding new column school_id -->
+        <addColumn tableName="school_years">
+            <column name="school_id" type="bigint">
+                <constraints foreignKeyName="fk_school_id" references="schools(id)" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

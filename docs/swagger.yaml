@@ -1,0 +1,6242 @@
+definitions:
+  models.BankAccount:
+    properties:
+      accountName:
+        type: string
+      accountNumber:
+        type: string
+      accountOwner:
+        type: string
+      bankName:
+        type: string
+      createdAt:
+        type: string
+      createdBy:
+        type: integer
+      deletedAt:
+        type: string
+      deletedBy:
+        type: integer
+      id:
+        type: integer
+      school:
+        $ref: '#/definitions/models.School'
+      schoolId:
+        type: integer
+      updatedAt:
+        type: string
+      updatedBy:
+        type: integer
+    type: object
+  models.Billing:
+    properties:
+      bankAccount:
+        $ref: '#/definitions/models.BankAccount'
+      bankAccountId:
+        type: integer
+      billingAmount:
+        type: integer
+      billingCode:
+        type: string
+      billingName:
+        type: string
+      billingNumber:
+        type: string
+      billingTypeId:
+        type: string
+      createdAt:
+        type: string
+      createdBy:
+        type: integer
+      deletedAt:
+        type: string
+      deletedBy:
+        type: integer
+      description:
+        type: string
+      id:
+        type: integer
+      isDonation:
+        type: boolean
+      schoolClassIds:
+        type: string
+      schoolGrade:
+        $ref: '#/definitions/models.SchoolGrade'
+      schoolGradeId:
+        type: integer
+      schoolYear:
+        $ref: '#/definitions/models.SchoolYear'
+      schoolYearId:
+        type: integer
+      updatedAt:
+        type: string
+      updatedBy:
+        type: integer
+    type: object
+  models.BillingDetail:
+    properties:
+      amount:
+        type: integer
+      billingId:
+        type: integer
+      createdAt:
+        type: string
+      createdBy:
+        type: integer
+      deletedAt:
+        type: string
+      deletedBy:
+        type: integer
+      detailBillingName:
+        type: string
+      dueDate:
+        type: string
+      id:
+        type: integer
+      updatedAt:
+        type: string
+      updatedBy:
+        type: integer
+    type: object
+  models.BillingStatus:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  models.BillingStudent:
+    properties:
+      amount:
+        type: integer
+      billingDetailId:
+        type: integer
+      billingId:
+        type: integer
+      createdAt:
+        type: string
+      createdBy:
+        type: integer
+      deletedAt:
+        type: string
+      deletedBy:
+        type: integer
+      detailBillingName:
+        type: string
+      dueDate:
+        type: string
+      id:
+        type: integer
+      paymentStatus:
+        type: string
+      studentId:
+        type: integer
+      updatedAt:
+        type: string
+      updatedBy:
+        type: integer
+    type: object
+  models.InvoiceFormat:
+    properties:
+      createdAt:
+        type: string
+      createdBy:
+        type: integer
+      deletedAt:
+        type: string
+      deletedBy:
+        type: integer
+      format:
+        type: string
+      generatedInvoiceFormat:
+        type: string
+      id:
+        type: integer
+      prefix:
+        type: string
+      school:
+        $ref: '#/definitions/models.School'
+      schoolId:
+        type: integer
+      updatedAt:
+        type: string
+      updatedBy:
+        type: integer
+    type: object
+  models.PaymentMethod:
+    properties:
+      adminFee:
+        type: integer
+      adminFeePercentage:
+        type: string
+      bankCode:
+        type: string
+      bankName:
+        type: string
+      createdAt:
+        type: string
+      createdBy:
+        type: integer
+      deletedAt:
+        type: string
+      deletedBy:
+        type: integer
+      id:
+        type: integer
+      isPercentage:
+        type: boolean
+      methodLogo:
+        type: string
+      paymentMethod:
+        type: string
+      updatedAt:
+        type: string
+      updatedBy:
+        type: integer
+    type: object
+  models.PrefixClass:
+    properties:
+      createdAt:
+        type: string
+      createdBy:
+        type: integer
+      deletedAt:
+        type: string
+      deletedBy:
+        type: integer
+      id:
+        type: integer
+      prefixName:
+        type: string
+      schoolID:
+        type: integer
+      updatedAt:
+        type: string
+      updatedBy:
+        type: integer
+    type: object
+  models.Role:
+    properties:
+      createdAt:
+        type: string
+      createdBy:
+        type: integer
+      deletedAt:
+        type: string
+      deletedBy:
+        type: integer
+      id:
+        type: integer
+      name:
+        type: string
+      roleMatrix:
+        items:
+          $ref: '#/definitions/models.RoleMatrix'
+        type: array
+      updatedAt:
+        type: string
+      updatedBy:
+        type: integer
+    required:
+    - name
+    type: object
+  models.RoleMatrix:
+    properties:
+      createdAt:
+        type: string
+      createdBy:
+        type: integer
+      deletedAt:
+        type: string
+      deletedBy:
+        type: integer
+      id:
+        type: integer
+      isCreate:
+        type: boolean
+      isDelete:
+        type: boolean
+      isRead:
+        type: boolean
+      isUpdate:
+        type: boolean
+      pageCode:
+        type: string
+      pageName:
+        type: string
+      roleId:
+        type: integer
+      updatedAt:
+        type: string
+      updatedBy:
+        type: integer
+    type: object
+  models.School:
+    properties:
+      createdAt:
+        type: string
+      createdBy:
+        type: integer
+      deletedAt:
+        type: string
+      deletedBy:
+        type: integer
+      id:
+        description: Primary key field (ID)
+        type: integer
+      npsn:
+        type: integer
+      schoolAddress:
+        type: string
+      schoolCity:
+        type: string
+      schoolCode:
+        type: string
+      schoolFax:
+        type: string
+      schoolGradeId:
+        type: integer
+      schoolGrades:
+        $ref: '#/definitions/models.SchoolGrade'
+      schoolLetterhead:
+        type: string
+      schoolLogo:
+        type: string
+      schoolMail:
+        type: string
+      schoolName:
+        type: string
+      schoolPhone:
+        type: string
+      schoolProvince:
+        type: string
+      updatedAt:
+        type: string
+      updatedBy:
+        type: integer
+      userSchools:
+        items:
+          $ref: '#/definitions/models.UserSchool'
+        type: array
+    type: object
+  models.SchoolClass:
+    properties:
+      createdAt:
+        type: string
+      createdBy:
+        type: integer
+      deletedAt:
+        type: string
+      deletedBy:
+        type: integer
+      id:
+        type: integer
+      prefixClassId:
+        type: integer
+      school:
+        $ref: '#/definitions/models.School'
+      schoolClassCode:
+        type: string
+      schoolClassName:
+        type: string
+      schoolGrade:
+        $ref: '#/definitions/models.SchoolGrade'
+      schoolGradeId:
+        type: integer
+      schoolId:
+        type: integer
+      schoolMajorId:
+        type: integer
+      suffix:
+        type: string
+      updatedAt:
+        type: string
+      updatedBy:
+        type: integer
+    type: object
+  models.SchoolGrade:
+    properties:
+      createdAt:
+        type: string
+      createdBy:
+        type: integer
+      deletedAt:
+        type: string
+      deletedBy:
+        type: integer
+      id:
+        type: integer
+      schoolClass:
+        items:
+          $ref: '#/definitions/models.SchoolClass'
+        type: array
+      schoolGradeCode:
+        type: string
+      schoolGradeName:
+        type: string
+      updatedAt:
+        type: string
+      updatedBy:
+        type: integer
+    type: object
+  models.SchoolMajor:
+    properties:
+      createdAt:
+        type: string
+      createdBy:
+        type: integer
+      deletedAt:
+        type: string
+      deletedBy:
+        type: integer
+      id:
+        type: integer
+      schoolID:
+        type: integer
+      schoolMajorName:
+        type: string
+      updatedAt:
+        type: string
+      updatedBy:
+        type: integer
+    type: object
+  models.SchoolYear:
+    properties:
+      createdAt:
+        type: string
+      createdBy:
+        type: integer
+      deletedAt:
+        type: string
+      deletedBy:
+        type: integer
+      endDate:
+        type: string
+      id:
+        type: integer
+      schoolId:
+        type: integer
+      schoolYearCode:
+        type: string
+      schoolYearName:
+        type: string
+      startDate:
+        type: string
+      updatedAt:
+        type: string
+      updatedBy:
+        type: integer
+    type: object
+  models.Student:
+    properties:
+      address:
+        type: string
+      birthDate:
+        type: string
+      birthPlace:
+        type: string
+      citizenship:
+        type: string
+      createdAt:
+        type: string
+      createdBy:
+        type: integer
+      deletedAt:
+        type: string
+      deletedBy:
+        type: integer
+      distanceToSchool:
+        type: integer
+      email:
+        type: string
+      fullName:
+        type: string
+      gender:
+        type: string
+      height:
+        type: string
+      id:
+        type: integer
+      image:
+        type: string
+      medicalHistory:
+        type: string
+      nickName:
+        type: string
+      nik:
+        type: string
+      nis:
+        type: string
+      nisn:
+        type: string
+      noHandphone:
+        type: string
+      registrationNumber:
+        type: string
+      religion:
+        type: string
+      schoolClass:
+        type: string
+      schoolClassId:
+        type: integer
+      schoolGrade:
+        type: string
+      schoolGradeId:
+        type: integer
+      schoolYearId:
+        type: integer
+      sibling:
+        type: string
+      status:
+        type: string
+      updatedAt:
+        type: string
+      updatedBy:
+        type: integer
+      userStudents:
+        $ref: '#/definitions/models.UserStudent'
+      weight:
+        type: string
+      yearId:
+        type: string
+    required:
+    - address
+    - birthDate
+    - birthPlace
+    - citizenship
+    - distanceToSchool
+    - fullName
+    - gender
+    - noHandphone
+    - religion
+    - schoolGrade
+    - status
+    - yearId
+    type: object
+  models.User:
+    properties:
+      createdAt:
+        type: string
+      createdBy:
+        type: integer
+      deletedAt:
+        type: string
+      deletedBy:
+        type: integer
+      email:
+        type: string
+      id:
+        type: integer
+      image:
+        type: string
+      isBlock:
+        description: Set default to false
+        type: boolean
+      isVerification:
+        description: Set default to false
+        type: boolean
+      password:
+        type: string
+      role:
+        $ref: '#/definitions/models.Role'
+      roleId:
+        type: integer
+      updatedAt:
+        type: string
+      updatedBy:
+        type: integer
+      userSchool:
+        $ref: '#/definitions/models.UserSchool'
+      userStudents:
+        items:
+          $ref: '#/definitions/models.UserStudent'
+        type: array
+      username:
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  models.UserSchool:
+    properties:
+      createdAt:
+        type: string
+      createdBy:
+        type: integer
+      deletedAt:
+        type: string
+      deletedBy:
+        type: integer
+      id:
+        type: integer
+      school:
+        $ref: '#/definitions/models.School'
+      schoolId:
+        type: integer
+      updatedAt:
+        type: string
+      updatedBy:
+        type: integer
+      user:
+        $ref: '#/definitions/models.User'
+      userId:
+        type: integer
+    type: object
+  models.UserStudent:
+    properties:
+      createdAt:
+        type: string
+      createdBy:
+        type: integer
+      deletedAt:
+        type: string
+      deletedBy:
+        type: integer
+      id:
+        type: integer
+      student:
+        $ref: '#/definitions/models.Student'
+      studentId:
+        type: integer
+      updatedAt:
+        type: string
+      updatedBy:
+        type: integer
+      user:
+        $ref: '#/definitions/models.User'
+      userId:
+        type: integer
+    type: object
+  request.BankAccountCreateRequest:
+    properties:
+      accountName:
+        type: string
+      accountNumber:
+        type: string
+      accountOwner:
+        type: string
+      bankName:
+        type: string
+      schoolId:
+        type: integer
+    type: object
+  request.BillingCreateRequest:
+    properties:
+      bankAccountId:
+        type: integer
+      billingAmount:
+        type: integer
+      billingCode:
+        type: string
+      billingName:
+        type: string
+      billingType:
+        type: string
+      description:
+        type: string
+      detailBillings:
+        items:
+          $ref: '#/definitions/request.DetailBillings'
+        type: array
+      schoolClassIds:
+        items:
+          type: string
+        type: array
+      schoolGradeId:
+        type: integer
+      schoolYearId:
+        type: integer
+    type: object
+  request.BillingUpdateRequest:
+    properties:
+      billingAmount:
+        type: integer
+      billingName:
+        type: string
+      discount:
+        type: integer
+      endDate:
+        type: string
+      paymentType:
+        type: string
+      ppn:
+        type: integer
+      startDate:
+        type: string
+      tenor:
+        type: string
+    type: object
+  request.ChangePasswordRequest:
+    properties:
+      password:
+        type: string
+    type: object
+  request.CreateBillingStudentRequest:
+    properties:
+      detailDataBilling:
+        items:
+          $ref: '#/definitions/request.DetailDataBillingRequest'
+        type: array
+      studentId:
+        type: integer
+    type: object
+  request.CreateInvoiceFormatRequest:
+    properties:
+      format:
+        type: string
+      generatedInvoiceFormat:
+        type: string
+      prefix:
+        type: string
+      schoolId:
+        type: integer
+    required:
+    - format
+    - prefix
+    - schoolId
+    type: object
+  request.CreateStudentRequest:
+    properties:
+      address:
+        type: string
+      birthDate:
+        type: string
+      birthPlace:
+        type: string
+      citizenship:
+        type: string
+      distanceToSchool:
+        type: integer
+      emailParent:
+        type: string
+      entryYear:
+        type: string
+      fullName:
+        type: string
+      gender:
+        type: string
+      height:
+        type: string
+      image:
+        type: string
+      medicalHistory:
+        type: string
+      nickName:
+        type: string
+      nik:
+        type: string
+      nis:
+        type: string
+      nisn:
+        type: string
+      noHandphone:
+        type: string
+      registrationNumber:
+        type: string
+      religion:
+        type: string
+      schoolClassId:
+        type: integer
+      schoolGradeId:
+        type: integer
+      schoolId:
+        type: integer
+      schoolYearId:
+        type: integer
+      sibling:
+        type: string
+      status:
+        type: string
+      weight:
+        type: string
+    required:
+    - address
+    - birthDate
+    - birthPlace
+    - citizenship
+    - distanceToSchool
+    - fullName
+    - gender
+    - noHandphone
+    - religion
+    type: object
+  request.CreateTransactionRequest:
+    properties:
+      amount:
+        type: integer
+      amountToPay:
+        type: integer
+      billingId:
+        type: integer
+      billingStudentIds:
+        items:
+          type: string
+        type: array
+      changeAmount:
+        type: integer
+      description:
+        type: string
+      discount:
+        type: integer
+      discountType:
+        type: string
+      paymentMethodId:
+        type: integer
+      studentId:
+        type: integer
+      totalBilling:
+        type: integer
+    type: object
+  request.DetailBillings:
+    properties:
+      amount:
+        type: integer
+      detailBillingName:
+        type: string
+      dueDate:
+        type: string
+    type: object
+  request.DetailDataBillingRequest:
+    properties:
+      billingDetailIds:
+        type: string
+      billingId:
+        type: integer
+    type: object
+  request.DummyNotifRequest:
+    properties:
+      announcementId:
+        type: string
+      body:
+        type: string
+      image:
+        type: string
+      nis:
+        type: string
+      notificationType:
+        type: string
+      redirectUrl:
+        type: string
+      studentName:
+        type: string
+      title:
+        type: string
+      transactionId:
+        type: string
+      type:
+        type: string
+    type: object
+  request.LoginRequest:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    type: object
+  request.PrefixClassCreate:
+    properties:
+      prefixName:
+        type: string
+      schoolId:
+        type: integer
+    type: object
+  request.SchoolClassCreateUpdateRequest:
+    properties:
+      prefixClassId:
+        type: integer
+      schoolClassName:
+        type: string
+      schoolGradeId:
+        type: integer
+      schoolId:
+        type: integer
+      schoolMajorId:
+        type: integer
+      suffix:
+        type: string
+    type: object
+  request.SchoolGradeCreateUpdateRequest:
+    properties:
+      schoolGradeName:
+        type: string
+    type: object
+  request.SchoolMajorCreate:
+    properties:
+      schoolId:
+        type: integer
+      schoolMajorName:
+        type: string
+    type: object
+  request.SchoolYearCreateUpdateRequest:
+    properties:
+      endDate:
+        description: Same as abo
+        type: string
+      schoolId:
+        type: integer
+      schoolYearName:
+        type: string
+      startDate:
+        description: Use string or time.Time depending on your parsing preference
+        type: string
+    type: object
+  request.UpdateBillingStudentRequest:
+    properties:
+      amount:
+        type: integer
+      detailBillingName:
+        type: string
+      dueDate:
+        type: string
+    type: object
+  request.UpdatePasswordRequest:
+    properties:
+      newPassword:
+        type: string
+      oldPassword:
+        type: string
+    type: object
+  request.UpdateStudentRequest:
+    properties:
+      address:
+        type: string
+      birthDate:
+        type: string
+      birthPlace:
+        type: string
+      citizenship:
+        type: string
+      distanceToSchool:
+        type: integer
+      emailParent:
+        type: string
+      fullName:
+        type: string
+      gender:
+        type: string
+      height:
+        type: string
+      image:
+        type: string
+      medicalHistory:
+        type: string
+      nickName:
+        type: string
+      nik:
+        type: string
+      nis:
+        type: string
+      nisn:
+        type: string
+      noHandphone:
+        type: string
+      religion:
+        type: string
+      schoolClassId:
+        type: integer
+      schoolGradeId:
+        type: integer
+      schoolYearId:
+        type: integer
+      sibling:
+        type: string
+      status:
+        type: string
+      weight:
+        type: string
+    required:
+    - address
+    - birthDate
+    - birthPlace
+    - citizenship
+    - distanceToSchool
+    - fullName
+    - gender
+    - noHandphone
+    - religion
+    type: object
+  request.UserCreateRequest:
+    properties:
+      email:
+        type: string
+      roleId:
+        type: integer
+      schoolId:
+        type: integer
+      username:
+        type: string
+    type: object
+  request.UserUpdateRequest:
+    properties:
+      roleId:
+        type: integer
+      status:
+        type: string
+      username:
+        type: string
+    type: object
+  request.VANumber:
+    properties:
+      bank:
+        type: string
+      va_number:
+        type: string
+    type: object
+  request.WebhookPayload:
+    properties:
+      bill_key:
+        type: string
+      biller_code:
+        type: string
+      currency:
+        type: string
+      expiry_time:
+        type: string
+      fraud_status:
+        type: string
+      gross_amount:
+        type: string
+      merchant_id:
+        type: string
+      order_id:
+        type: string
+      payment_amounts:
+        items:
+          type: string
+        type: array
+      payment_type:
+        type: string
+      permata_va_number:
+        type: string
+      settlement_time:
+        description: Pointer to make it optional
+        type: string
+      signature_key:
+        type: string
+      status_code:
+        type: string
+      status_message:
+        type: string
+      transaction_id:
+        type: string
+      transaction_status:
+        type: string
+      transaction_time:
+        type: string
+      va_numbers:
+        items:
+          $ref: '#/definitions/request.VANumber'
+        type: array
+    type: object
+  response.BankData:
+    properties:
+      alias:
+        type: string
+      bankName:
+        type: string
+      codeBank:
+        type: string
+    type: object
+  response.BankResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/response.BankData'
+        type: array
+    type: object
+  response.BillingByStudentResponse:
+    properties:
+      billingExist:
+        type: boolean
+      data:
+        items:
+          $ref: '#/definitions/response.BillingStudentData'
+        type: array
+    type: object
+  response.BillingDetailResponse:
+    properties:
+      bankAccountName:
+        description: Bank account associated with the billing
+        type: string
+      billingCode:
+        description: Code of the billing
+        type: string
+      billingName:
+        description: Name of the billing
+        type: string
+      billingType:
+        description: Type of the billing
+        type: string
+      description:
+        description: Description of the billing
+        type: string
+      detailBillings:
+        items:
+          $ref: '#/definitions/response.DetailBilling'
+        type: array
+      id:
+        description: ID of the billing
+        type: integer
+      schoolClassList:
+        description: List of school classes (if applicable)
+        type: string
+      schoolYear:
+        description: Name of the school year
+        type: string
+    type: object
+  response.BillingListResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/response.BillingResponse'
+        type: array
+      limit:
+        type: integer
+      page:
+        type: integer
+      totalData:
+        type: integer
+      totalPage:
+        type: integer
+    type: object
+  response.BillingResponse:
+    properties:
+      bankAccountName:
+        type: string
+      billingName:
+        type: string
+      billingNumber:
+        type: string
+      billingType:
+        type: string
+      createdAt:
+        type: string
+      createdBy:
+        type: string
+      id:
+        type: integer
+      schoolGradeName:
+        type: string
+    type: object
+  response.BillingStudentData:
+    properties:
+      billingId:
+        type: integer
+      billingName:
+        type: string
+      billingStudents:
+        items:
+          $ref: '#/definitions/response.BillingStudentDetailData'
+        type: array
+    type: object
+  response.BillingStudentDetailData:
+    properties:
+      amount:
+        type: integer
+      billingDetailId:
+        type: integer
+      billingDetailName:
+        type: string
+      isExist:
+        type: boolean
+    type: object
+  response.BillingStudentDetailResponse:
+    properties:
+      amount:
+        type: integer
+      billingStudentId:
+        type: integer
+      detailBillingName:
+        type: string
+      dueDate:
+        type: string
+    type: object
+  response.BillingStudentForHistory:
+    properties:
+      amount:
+        type: integer
+      billingType:
+        type: string
+      detailBillingName:
+        type: string
+      dueDate:
+        type: string
+    type: object
+  response.DashboardAdminResponse:
+    properties:
+      activeStudent:
+        type: integer
+      totalBilling:
+        type: integer
+      totalTransaction:
+        type: integer
+    type: object
+  response.DashboardResponse:
+    properties:
+      dataDashboard:
+        items:
+          $ref: '#/definitions/response.DetailDashboardResponse'
+        type: array
+    type: object
+  response.DataListBillingHistory:
+    properties:
+      id:
+        type: integer
+      invoiceNumber:
+        type: string
+      orderId:
+        type: string
+      paymentDate:
+        type: string
+      paymentMethod:
+        type: string
+      redirectUrl:
+        type: string
+      studentName:
+        type: string
+      token:
+        type: string
+      totalAmount:
+        type: integer
+      transactionStatus:
+        type: string
+      username:
+        type: string
+    type: object
+  response.DataUserForAuth:
+    properties:
+      email:
+        type: string
+      id:
+        type: integer
+      image:
+        type: string
+      role:
+        $ref: '#/definitions/response.DetailRole'
+      schoolData:
+        $ref: '#/definitions/response.DetailSchoolResponse'
+      username:
+        type: string
+    type: object
+  response.DetailBilling:
+    properties:
+      amount:
+        type: integer
+      detailBillingName:
+        type: string
+      dueDate:
+        type: string
+      id:
+        description: Add ID field
+        type: integer
+    type: object
+  response.DetailBillingHistory:
+    properties:
+      adminFee:
+        type: integer
+      changeAmount:
+        type: integer
+      discountAmount:
+        type: integer
+      id:
+        type: integer
+      invoiceNumber:
+        type: string
+      listBilling:
+        items:
+          $ref: '#/definitions/response.BillingStudentForHistory'
+        type: array
+      paymentDate:
+        type: string
+      paymentMethod:
+        type: string
+      schoolClass:
+        type: string
+      studentName:
+        type: string
+      totalBillingAmount:
+        type: integer
+      totalBillingBeforeDiscount:
+        type: integer
+      totalPayAmount:
+        type: integer
+      transactionStatus:
+        type: string
+    type: object
+  response.DetailDashboardResponse:
+    properties:
+      detailDataStudent:
+        $ref: '#/definitions/response.StudentResponse'
+      donationName:
+        type: string
+      listLatestBilling:
+        items:
+          $ref: '#/definitions/response.ListLatestBillingResponse'
+        type: array
+    type: object
+  response.DetailPrefixResponse:
+    properties:
+      id:
+        type: integer
+      prefixName:
+        type: string
+    type: object
+  response.DetailRole:
+    properties:
+      id:
+        type: integer
+      roleMatrix:
+        items:
+          $ref: '#/definitions/response.DetailRoleMatrix'
+        type: array
+      roleName:
+        type: string
+    type: object
+  response.DetailRoleMatrix:
+    properties:
+      isCreate:
+        type: boolean
+      isDelete:
+        type: boolean
+      isRead:
+        type: boolean
+      isUpdate:
+        type: boolean
+      pageCode:
+        type: string
+      pageName:
+        type: string
+    type: object
+  response.DetailSchoolMajorResponse:
+    properties:
+      id:
+        type: integer
+      schoolMajorName:
+        type: string
+    type: object
+  response.DetailSchoolResponse:
+    properties:
+      id:
+        type: integer
+      npsn:
+        type: integer
+      schoolAddress:
+        type: string
+      schoolCity:
+        type: string
+      schoolCode:
+        type: string
+      schoolFax:
+        type: string
+      schoolGradeId:
+        type: integer
+      schoolGradeName:
+        type: string
+      schoolLetterhead:
+        type: string
+      schoolLogo:
+        type: string
+      schoolMail:
+        type: string
+      schoolName:
+        type: string
+      schoolPhone:
+        type: string
+      schoolProvince:
+        type: string
+    type: object
+  response.DetailSchoolYearResponse:
+    properties:
+      createdAt:
+        type: string
+      createdBy:
+        type: string
+      endDate:
+        type: string
+      id:
+        type: integer
+      schoolYearName:
+        type: string
+      startDate:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  response.DetailStudentResponse:
+    properties:
+      address:
+        type: string
+      birthDate:
+        type: string
+      birthPlace:
+        type: string
+      citizenship:
+        type: string
+      distanceToSchool:
+        type: integer
+      email:
+        type: string
+      fullName:
+        type: string
+      gender:
+        type: string
+      height:
+        type: string
+      id:
+        type: integer
+      image:
+        type: string
+      medicalHistory:
+        type: string
+      nickName:
+        type: string
+      nik:
+        type: string
+      nis:
+        type: string
+      nisn:
+        type: string
+      noHandphone:
+        type: string
+      placeholder:
+        type: string
+      registrationNumber:
+        type: string
+      religion:
+        type: string
+      schoolClass:
+        type: string
+      schoolClassId:
+        type: integer
+      schoolGrade:
+        type: string
+      schoolGradeId:
+        type: integer
+      schoolId:
+        type: integer
+      schoolName:
+        type: string
+      schoolYearId:
+        type: integer
+      schoolYearName:
+        type: string
+      sibling:
+        type: string
+      status:
+        type: string
+      weight:
+        type: string
+      yearId:
+        type: string
+    type: object
+  response.DetailUserResponse:
+    properties:
+      email:
+        type: string
+      id:
+        type: integer
+      image:
+        type: string
+      roleId:
+        type: integer
+      roleName:
+        type: string
+      schoolId:
+        type: integer
+      schoolName:
+        type: string
+      status:
+        type: string
+      username:
+        type: string
+      verificationEmail:
+        type: boolean
+    type: object
+  response.InvoiceFormatResponse:
+    properties:
+      createdAt:
+        type: string
+      createdBy:
+        type: integer
+      format:
+        type: string
+      generatedInvoiceFormat:
+        type: string
+      id:
+        type: integer
+      prefix:
+        type: string
+      schoolId:
+        type: integer
+      updatedAt:
+        type: string
+      updatedBy:
+        type: integer
+    type: object
+  response.ListBillingHistory:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/response.DataListBillingHistory'
+        type: array
+      limit:
+        type: integer
+      page:
+        type: integer
+      totalData:
+        type: integer
+      totalPage:
+        type: integer
+    type: object
+  response.ListDataUserForIndex:
+    properties:
+      createdDate:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      roleId:
+        type: integer
+      roleName:
+        type: string
+      schoolId:
+        type: integer
+      schoolName:
+        type: string
+      status:
+        type: string
+      username:
+        type: string
+      verificationEmail:
+        type: boolean
+    type: object
+  response.ListLatestBillingResponse:
+    properties:
+      amount:
+        type: integer
+      billingName:
+        type: string
+      dueDate:
+        description: Use string if you want formatted date, otherwise `time.Time`
+        type: string
+      status:
+        type: string
+      studentName:
+        type: string
+    type: object
+  response.LoginResponse:
+    properties:
+      token:
+        type: string
+    type: object
+  response.PaymentMethodResponse:
+    properties:
+      adminFee:
+        type: integer
+      adminFeePercentage:
+        type: string
+      bankCode:
+        type: string
+      bankName:
+        type: string
+      id:
+        type: integer
+      isPercentage:
+        type: boolean
+      methodLogo:
+        type: string
+      paymentMethod:
+        type: string
+    type: object
+  response.PaymentType:
+    properties:
+      code:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  response.PrefixCLassResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/response.DetailPrefixResponse'
+        type: array
+    type: object
+  response.SchoolClassDetailResponse:
+    properties:
+      id:
+        type: integer
+      prefix_class_id:
+        type: integer
+      school_class_name:
+        type: string
+      school_grade_id:
+        type: integer
+      school_major_id:
+        type: integer
+      suffix:
+        type: string
+    type: object
+  response.SchoolClassListResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/response.SchoolClassResponse'
+        type: array
+      limit:
+        type: integer
+      page:
+        type: integer
+      totalData:
+        type: integer
+      totalPage:
+        type: integer
+    type: object
+  response.SchoolClassResponse:
+    properties:
+      createdBy:
+        type: string
+      id:
+        type: integer
+      isEdit:
+        type: boolean
+      placeholder:
+        type: string
+      prefixClass:
+        type: string
+      schoolClassName:
+        type: string
+      schoolMajor:
+        type: string
+      status:
+        type: boolean
+      unit:
+        type: string
+    type: object
+  response.SchoolGradeListResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/models.SchoolGrade'
+        type: array
+      limit:
+        type: integer
+      page:
+        type: integer
+    type: object
+  response.SchoolListResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/response.SchoolResponse'
+        type: array
+      limit:
+        type: integer
+      page:
+        type: integer
+      totalData:
+        type: integer
+      totalPage:
+        type: integer
+    type: object
+  response.SchoolMajorResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/response.DetailSchoolMajorResponse'
+        type: array
+    type: object
+  response.SchoolOnBoardingResponse:
+    properties:
+      id:
+        type: integer
+      npsn:
+        type: integer
+      schoolLogo:
+        type: string
+      schoolName:
+        type: string
+    type: object
+  response.SchoolResponse:
+    properties:
+      createdBy:
+        type: string
+      id:
+        type: integer
+      npsn:
+        type: integer
+      schoolName:
+        type: string
+      schoolPhone:
+        type: string
+      schoolProvince:
+        type: string
+    type: object
+  response.SchoolYearDetailResponse:
+    properties:
+      end_date:
+        type: string
+      id:
+        type: integer
+      schoolYearName:
+        type: string
+      start_date:
+        type: string
+    type: object
+  response.SchoolYearListResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/response.DetailSchoolYearResponse'
+        type: array
+      limit:
+        type: integer
+      page:
+        type: integer
+      totalData:
+        type: integer
+      totalPage:
+        type: integer
+    type: object
+  response.StudentListResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/response.DetailStudentResponse'
+        type: array
+      limit:
+        type: integer
+      page:
+        type: integer
+      totalData:
+        type: integer
+      totalPage:
+        type: integer
+    type: object
+  response.StudentResponse:
+    properties:
+      fullName:
+        type: string
+      id:
+        type: integer
+      nis:
+        type: string
+      schoolClass:
+        type: string
+      schoolName:
+        type: string
+      status:
+        type: string
+    type: object
+  response.UserListResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/response.ListDataUserForIndex'
+        type: array
+      limit:
+        type: integer
+      page:
+        type: integer
+      totalData:
+        type: integer
+      totalPage:
+        type: integer
+    type: object
+info:
+  contact: {}
+paths:
+  /api/v1/announcement/create:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Create a new announcement with details and optional hero image
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      - description: School ID
+        in: formData
+        name: schoolId
+        required: true
+        type: integer
+      - description: Title of the announcement
+        in: formData
+        name: title
+        required: true
+        type: string
+      - description: Description of the announcement
+        in: formData
+        name: description
+        type: string
+      - description: Type of the announcement (e.g., Event, General)
+        in: formData
+        name: type
+        required: true
+        type: string
+      - description: Event Date in YYYY-MM-DD format
+        in: formData
+        name: eventDate
+        type: string
+      - description: Hero image for the announcement
+        in: formData
+        name: heroImage
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Announcement created successfully
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Invalid input data
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Create a New Announcement
+      tags:
+      - Announcements
+  /api/v1/announcement/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete an announcement by its ID
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Announcement ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Announcement deleted successfully
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: Announcement not found
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Failed to delete announcement
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Delete an Announcement
+      tags:
+      - Announcements
+  /api/v1/announcement/detail/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve details of an announcement by its ID
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Announcement ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Announcement details
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Invalid announcement ID
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Failed to retrieve announcement
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get Announcement Detail
+      tags:
+      - Announcements
+  /api/v1/announcement/getList:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a paginated list of announcements
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: 'Page number (default: 1)'
+        in: query
+        name: page
+        type: integer
+      - description: 'Number of items per page (default: 10)'
+        in: query
+        name: limit
+        type: integer
+      - description: Search keyword
+        in: query
+        name: search
+        type: string
+      - description: Field to sort by
+        in: query
+        name: sortBy
+        type: string
+      - description: 'Sort order (asc or desc, default: asc)'
+        in: query
+        name: sortOrder
+        type: string
+      - description: Announcement type filter
+        in: query
+        name: type
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Paginated list of announcements
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Failed to retrieve announcements
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get List of Announcements
+      tags:
+      - Announcements
+  /api/v1/announcement/type:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a list of available announcement types
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of announcement types
+          schema:
+            items:
+              type: string
+            type: array
+        "500":
+          description: Failed to retrieve announcement types
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get Announcement Types
+      tags:
+      - Announcements
+  /api/v1/announcement/update/{id}:
+    put:
+      consumes:
+      - multipart/form-data
+      description: Update an existing announcement by its ID
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Announcement ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Title of the announcement
+        in: formData
+        name: title
+        type: string
+      - description: Description of the announcement
+        in: formData
+        name: description
+        type: string
+      - description: Type of the announcement (e.g., Event, General)
+        in: formData
+        name: type
+        type: string
+      - description: Event date in YYYY-MM-DD format
+        in: formData
+        name: eventDate
+        type: string
+      - description: Hero image for the announcement
+        in: formData
+        name: heroImage
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Announcement updated successfully
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Invalid input data
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Update an Announcement
+      tags:
+      - Announcements
+  /api/v1/assets/announcement/{filename}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve the announcement image by filename
+      parameters:
+      - description: Announcement image filename
+        in: path
+        name: filename
+        required: true
+        type: string
+      produces:
+      - image/jpeg
+      - ' image/png'
+      responses:
+        "200":
+          description: Image file
+          schema:
+            type: file
+        "415":
+          description: Unsupported image format
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Failed to retrieve or encode image
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get Announcement Image
+      tags:
+      - Assets
+  /api/v1/assets/paymentMethod/logo/{filename}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve the payment method logo image by filename
+      parameters:
+      - description: Payment method logo filename
+        in: path
+        name: filename
+        required: true
+        type: string
+      produces:
+      - image/jpeg
+      - ' image/png'
+      responses:
+        "200":
+          description: Image file
+          schema:
+            type: file
+        "415":
+          description: Unsupported image format
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Failed to retrieve or encode image
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get Payment Method Logo Image
+      tags:
+      - Assets
+  /api/v1/assets/school/letterhead/{filename}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve the school letterhead image by filename
+      parameters:
+      - description: Letterhead image filename
+        in: path
+        name: filename
+        required: true
+        type: string
+      produces:
+      - image/jpeg
+      - ' image/png'
+      responses:
+        "200":
+          description: Image file
+          schema:
+            type: file
+        "415":
+          description: Unsupported image format
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Failed to retrieve or encode image
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get Letterhead Image
+      tags:
+      - Assets
+  /api/v1/assets/school/logo/{filename}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve the school logo image by filename
+      parameters:
+      - description: Logo filename
+        in: path
+        name: filename
+        required: true
+        type: string
+      produces:
+      - image/jpeg
+      - ' image/png'
+      responses:
+        "200":
+          description: Image file
+          schema:
+            type: file
+        "415":
+          description: Unsupported image format
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Failed to retrieve or encode image
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get School Logo Image
+      tags:
+      - Assets
+  /api/v1/assets/user/image/{filename}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve the user image by filename
+      parameters:
+      - description: User image filename
+        in: path
+        name: filename
+        required: true
+        type: string
+      produces:
+      - image/jpeg
+      - ' image/png'
+      responses:
+        "200":
+          description: Image file
+          schema:
+            type: file
+        "415":
+          description: Unsupported image format
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Failed to retrieve or encode image
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get User Image
+      tags:
+      - Assets
+  /api/v1/auth:
+    get:
+      consumes:
+      - application/json
+      description: Get Data User After Login
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.DataUserForAuth'
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Auth User
+      tags:
+      - Authentication
+  /api/v1/bankAccount/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a new bank account for the authenticated user
+      parameters:
+      - description: Bank Account Data
+        in: body
+        name: bankAccount
+        required: true
+        schema:
+          $ref: '#/definitions/request.BankAccountCreateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Bank account created successfully
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Invalid request data
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Failed to create bank account
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Create Bank Account
+      tags:
+      - Bank Accounts
+  /api/v1/bankAccount/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a specific bank account by its ID
+      parameters:
+      - description: Bank Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Bank account deleted successfully
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Invalid bank account ID
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: Bank account not found
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Failed to delete bank account
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Delete Bank Account
+      tags:
+      - Bank Accounts
+  /api/v1/bankAccount/detail/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve details of a specific bank account by its ID
+      parameters:
+      - description: Bank Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Bank account details
+          schema:
+            $ref: '#/definitions/models.BankAccount'
+        "400":
+          description: Invalid bank account ID
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: Bank account not found
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Failed to retrieve bank account
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get Bank Account by ID
+      tags:
+      - Bank Accounts
+  /api/v1/bankAccount/getListBankAccount:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve all bank accounts for the authenticated user
+      parameters:
+      - description: 'Page number (default: 1)'
+        in: query
+        name: page
+        type: integer
+      - description: 'Number of records per page (default: 0)'
+        in: query
+        name: limit
+        type: integer
+      - description: Search keyword
+        in: query
+        name: search
+        type: string
+      - description: Field to sort by
+        in: query
+        name: sortBy
+        type: string
+      - description: Sort order (asc or desc)
+        in: query
+        name: sortOrder
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of bank accounts
+          schema:
+            items:
+              $ref: '#/definitions/models.BankAccount'
+            type: array
+        "500":
+          description: Failed to retrieve bank accounts
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get All Bank Accounts
+      tags:
+      - Bank Accounts
+  /api/v1/bankAccount/listBankName:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a list of banks from a predefined JSON file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of bank names
+          schema:
+            $ref: '#/definitions/response.BankResponse'
+        "500":
+          description: Failed to load bank names
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get Bank Names
+      tags:
+      - Bank Accounts
+  /api/v1/bankAccount/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update an existing bank account
+      parameters:
+      - description: Bank Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated Bank Account Data
+        in: body
+        name: bankAccount
+        required: true
+        schema:
+          $ref: '#/definitions/request.BankAccountCreateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Bank account updated successfully
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Invalid request data
+          schema:
+            additionalProperties: true
+            type: object
+        "409":
+          description: Account number already exists
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Failed to update bank account
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Update Bank Account
+      tags:
+      - Bank Accounts
+  /api/v1/billing/billingStatus:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve all billing data with optional filters
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      - description: Page number
+        in: query
+        name: page
+        type: integer
+      - description: Items per page
+        in: query
+        name: limit
+        type: integer
+      - description: Search term
+        in: query
+        name: search
+        type: string
+      - description: Billing type
+        in: query
+        name: billingType
+        type: string
+      - description: Payment type
+        in: query
+        name: paymentType
+        type: string
+      - description: School grade
+        in: query
+        name: schoolGrade
+        type: string
+      - description: Bank account ID
+        in: query
+        name: bankAccountId
+        type: integer
+      - description: Sort order (asc/desc)
+        in: query
+        name: sort
+        type: string
+      - description: Field to sort by
+        in: query
+        name: sortBy
+        type: string
+      - description: Order of sorting (asc/desc)
+        in: query
+        name: sortOrder
+        type: string
+      - description: Filter for donations
+        in: query
+        name: isDonation
+        type: boolean
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.BillingStatus'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get All Billings
+      tags:
+      - Billing
+  /api/v1/billing/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a new billing entry
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      - description: Billing creation payload
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.BillingCreateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Billing'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Create a New Billing
+      tags:
+      - Billing
+  /api/v1/billing/createDonation:
+    post:
+      consumes:
+      - application/json
+      description: Create a donation billing entry
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      - description: Donation creation payload
+        in: body
+        name: request
+        required: true
+        schema:
+          additionalProperties: true
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.BillingResponse'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Create Donation
+      tags:
+      - Billing
+  /api/v1/billing/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a billing entry by ID
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      - description: Billing ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Billing'
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Delete Billing
+      tags:
+      - Billing
+  /api/v1/billing/detail/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve billing data by its ID
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      - description: Billing ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.BillingDetailResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get Billing By ID
+      tags:
+      - Billing
+  /api/v1/billing/getAllBilling:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve all billing data with optional filters
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      - description: Page number
+        in: query
+        name: page
+        type: integer
+      - description: Items per page
+        in: query
+        name: limit
+        type: integer
+      - description: Search term
+        in: query
+        name: search
+        type: string
+      - description: Billing type
+        in: query
+        name: billingType
+        type: string
+      - description: Payment type
+        in: query
+        name: paymentType
+        type: string
+      - description: School grade
+        in: query
+        name: schoolGrade
+        type: string
+      - description: Bank account ID
+        in: query
+        name: bankAccountId
+        type: integer
+      - description: Sort order (asc/desc)
+        in: query
+        name: sort
+        type: string
+      - description: Field to sort by
+        in: query
+        name: sortBy
+        type: string
+      - description: Order of sorting (asc/desc)
+        in: query
+        name: sortOrder
+        type: string
+      - description: Filter for donations
+        in: query
+        name: isDonation
+        type: boolean
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.BillingListResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get All Billings
+      tags:
+      - Billing
+  /api/v1/billing/getBillingByStudentID:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve billing information for a specific student
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      - description: Student ID
+        in: query
+        name: studentId
+        required: true
+        type: integer
+      - description: School Year ID
+        in: query
+        name: schoolYearId
+        type: integer
+      - description: School Grade ID
+        in: query
+        name: schoolGradeId
+        type: integer
+      - description: School Class ID
+        in: query
+        name: schoolClassId
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.BillingByStudentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get Billing By Student ID
+      tags:
+      - Billing
+  /api/v1/billing/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update an existing billing entry
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      - description: Billing ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Billing update payload
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.BillingUpdateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Billing'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Update Billing
+      tags:
+      - Billing
+  /api/v1/billingHistory/detailBillingHistory:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve detailed billing history for a specific transaction ID
+      parameters:
+      - description: Transaction ID
+        in: query
+        name: transactionId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Billing history details
+          schema:
+            $ref: '#/definitions/response.DetailBillingHistory'
+        "404":
+          description: Data not found
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get Billing History Details
+      tags:
+      - Billing History
+  /api/v1/billingHistory/getAllBillingHistory:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve all billing history based on various filters and pagination
+      parameters:
+      - description: 'Page number (default: 1)'
+        in: query
+        name: page
+        type: integer
+      - description: 'Number of records per page (default: 10)'
+        in: query
+        name: limit
+        type: integer
+      - description: Search keyword
+        in: query
+        name: search
+        type: string
+      - description: Student ID filter
+        in: query
+        name: studentId
+        type: integer
+      - description: Payment status code filter
+        in: query
+        name: paymentStatusCode
+        type: string
+      - description: School year ID filter
+        in: query
+        name: schoolYearId
+        type: integer
+      - description: Payment type ID filter
+        in: query
+        name: paymentTypeId
+        type: integer
+      - description: User ID filter
+        in: query
+        name: userId
+        type: integer
+      - description: Field to sort by
+        in: query
+        name: sortBy
+        type: string
+      - description: Sort order (asc or desc)
+        in: query
+        name: sortOrder
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of billing history records
+          schema:
+            items:
+              $ref: '#/definitions/response.ListBillingHistory'
+            type: array
+        "500":
+          description: Failed to retrieve billing history
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get All Billing History
+      tags:
+      - Billing History
+  /api/v1/billingHistory/printInvoice:
+    get:
+      consumes:
+      - application/json
+      description: Generate a PDF invoice for a given invoice number
+      parameters:
+      - description: Invoice number
+        in: query
+        name: invoiceNumber
+        required: true
+        type: string
+      produces:
+      - application/pdf
+      responses:
+        "200":
+          description: PDF file generated successfully
+          schema:
+            type: file
+        "500":
+          description: Failed to generate invoice
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Generate Invoice PDF
+      tags:
+      - Billing History
+  /api/v1/billingReport/exportExcel:
+    get:
+      consumes:
+      - application/json
+      description: Export billing reports to an Excel file based on specified filters
+      parameters:
+      - description: School grade ID filter
+        in: query
+        name: schoolGradeId
+        type: integer
+      - description: School class ID filter
+        in: query
+        name: schoolClassId
+        type: integer
+      - description: Payment status ID filter
+        in: query
+        name: paymentStatusId
+        type: integer
+      - description: School year ID filter
+        in: query
+        name: schoolYearId
+        type: integer
+      - description: Bank account ID filter
+        in: query
+        name: bankAccountId
+        type: integer
+      - description: Billing type filter
+        in: query
+        name: billingType
+        type: string
+      - description: Student ID filter
+        in: query
+        name: studentId
+        type: integer
+      produces:
+      - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+      responses:
+        "200":
+          description: Excel file containing the exported billing report
+          schema:
+            type: file
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Failed to export billing report
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Export Billing Report to Excel
+      tags:
+      - Billing Reports
+  /api/v1/billingReport/getList:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a list of billing reports based on various filters and
+        pagination
+      parameters:
+      - description: 'Page number (default: 1)'
+        in: query
+        name: page
+        type: integer
+      - description: 'Number of records per page (default: 10)'
+        in: query
+        name: limit
+        type: integer
+      - description: Field to sort by (e.g., created_at)
+        in: query
+        name: sortBy
+        type: string
+      - description: 'Sort order (asc or desc, default: ASC)'
+        in: query
+        name: sortOrder
+        type: string
+      - description: School grade ID filter
+        in: query
+        name: schoolGradeId
+        type: integer
+      - description: School class ID filter
+        in: query
+        name: schoolClassId
+        type: integer
+      - description: Payment status ID filter
+        in: query
+        name: paymentStatusId
+        type: integer
+      - description: School year ID filter
+        in: query
+        name: schoolYearId
+        type: integer
+      - description: Bank account ID filter
+        in: query
+        name: bankAccountId
+        type: integer
+      - description: Billing type filter
+        in: query
+        name: billingType
+        type: string
+      - description: Student ID filter
+        in: query
+        name: studentId
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Paginated billing report data
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Invalid query parameters
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Failed to get billing reports
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get Billing Reports
+      tags:
+      - Billing Reports
+  /api/v1/billingStudent/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a new billing student record
+      parameters:
+      - description: Billing student creation request
+        in: body
+        name: createRequest
+        required: true
+        schema:
+          $ref: '#/definitions/request.CreateBillingStudentRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Created billing student details
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Invalid request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Create Billing Student
+      tags:
+      - Billing Students
+  /api/v1/billingStudent/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a billing student record
+      parameters:
+      - description: Billing Student ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Delete confirmation
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Invalid ID or deletion error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Delete Billing Student
+      tags:
+      - Billing Students
+  /api/v1/billingStudent/detailBillingByBillingStudentId/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve detailed billing student data by ID
+      parameters:
+      - description: Billing Student ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Billing student details
+          schema:
+            $ref: '#/definitions/response.BillingStudentDetailResponse'
+        "400":
+          description: Invalid ID
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get Detailed Billing Student
+      tags:
+      - Billing Students
+  /api/v1/billingStudent/detailBillingStudent:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve detailed billing information by student ID
+      parameters:
+      - description: Student ID
+        in: query
+        name: studentId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Detailed billing information
+          schema:
+            $ref: '#/definitions/models.BillingDetail'
+        "404":
+          description: Data not found
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get Billing Detail by ID
+      tags:
+      - Billing Students
+  /api/v1/billingStudent/getAllBillingStudent:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a paginated and filtered list of billing students
+      parameters:
+      - description: 'Page number (default: 1)'
+        in: query
+        name: page
+        type: integer
+      - description: 'Number of records per page (default: 10)'
+        in: query
+        name: limit
+        type: integer
+      - description: Search query for billing students
+        in: query
+        name: search
+        type: string
+      - description: Filter by student ID
+        in: query
+        name: studentId
+        type: integer
+      - description: Filter by school class ID
+        in: query
+        name: schoolClassId
+        type: integer
+      - description: Filter by payment type
+        in: query
+        name: paymentType
+        type: string
+      - description: Filter by school grade ID
+        in: query
+        name: schoolGradeId
+        type: integer
+      - description: Filter by school ID
+        in: query
+        name: schoolId
+        type: integer
+      - description: Field to sort by
+        in: query
+        name: sortBy
+        type: string
+      - description: 'Sort order (asc or desc, default: asc)'
+        in: query
+        name: sortOrder
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of billing students
+          schema:
+            items:
+              $ref: '#/definitions/models.BillingStudent'
+            type: array
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get All Billing Students
+      tags:
+      - Billing Students
+  /api/v1/billingStudent/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update billing student data
+      parameters:
+      - description: Billing Student ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Billing student update request
+        in: body
+        name: updateRequest
+        required: true
+        schema:
+          $ref: '#/definitions/request.UpdateBillingStudentRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Updated billing student data
+          schema:
+            $ref: '#/definitions/models.BillingStudent'
+        "400":
+          description: Invalid request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Update Billing Student
+      tags:
+      - Billing Students
+  /api/v1/city:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve city data filtered by Province ID
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      - description: Province ID
+        in: query
+        name: provinceId
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of cities
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get Cities by Province ID
+      tags:
+      - Cities
+  /api/v1/dashboard/admin:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve dashboard data for an admin user
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Dashboard data for admin
+          schema:
+            $ref: '#/definitions/response.DashboardAdminResponse'
+        "401":
+          description: Unauthorized access
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get Dashboard Data for Admin
+      tags:
+      - Dashboard
+  /api/v1/dashboard/parent:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve dashboard data for a parent user, optionally filtered
+        by student ID
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Student ID
+        in: query
+        name: studentId
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Dashboard data for parent
+          schema:
+            $ref: '#/definitions/response.DashboardResponse'
+        "401":
+          description: Unauthorized access
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get Dashboard Data for Parent
+      tags:
+      - Dashboard
+  /api/v1/invoiceFormat/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a new invoice format for a school
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Create Invoice Format Request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/request.CreateInvoiceFormatRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Invoice format created successfully
+          schema:
+            $ref: '#/definitions/models.InvoiceFormat'
+        "400":
+          description: Invalid request data
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: Unauthorized access
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Create Invoice Format
+      tags:
+      - Invoice Format
+  /api/v1/invoiceFormat/detail:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve an invoice format by its associated school ID
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: School ID
+        in: query
+        name: schoolId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Invoice format data
+          schema:
+            $ref: '#/definitions/response.InvoiceFormatResponse'
+        "400":
+          description: Invalid school ID
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get Invoice Format by School ID
+      tags:
+      - Invoice Format
+  /api/v1/login:
+    post:
+      consumes:
+      - application/json
+      description: Authenticate a user and retrieve a JWT token
+      parameters:
+      - description: Firebase token, only for mobile apps
+        in: header
+        name: firebaseToken
+        type: string
+      - description: School ID, defaults to 0 if not provided
+        in: header
+        name: schoolId
+        type: string
+      - description: Login request body
+        in: body
+        name: loginRequest
+        required: true
+        schema:
+          $ref: '#/definitions/request.LoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.LoginResponse'
+        "400":
+          description: Invalid input or request body
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Login
+      tags:
+      - Authentication
+  /api/v1/masterPaymentGateway/create:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Add a new payment method with optional logo upload
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Payment Method Name
+        in: formData
+        name: paymentMethod
+        required: true
+        type: string
+      - description: Bank Code
+        in: formData
+        name: bankCode
+        required: true
+        type: string
+      - description: Bank Name
+        in: formData
+        name: bankName
+        required: true
+        type: string
+      - description: Administrative Fee
+        in: formData
+        name: adminFee
+        required: true
+        type: integer
+      - description: Is Percentage (true/false)
+        in: formData
+        name: isPercentage
+        type: string
+      - description: Administrative Fee Percentage
+        in: formData
+        name: adminFeePercentage
+        type: string
+      - description: Logo for the Payment Method
+        in: formData
+        name: methodLogo
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Data saved successfully
+          schema:
+            $ref: '#/definitions/models.PaymentMethod'
+        "400":
+          description: Invalid input
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Create Payment Method
+      tags:
+      - Payment Method
+  /api/v1/masterPaymentGateway/detail/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve detailed information of a payment method by its ID
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Payment Method ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Payment method details
+          schema:
+            $ref: '#/definitions/response.PaymentMethodResponse'
+        "400":
+          description: Invalid ID
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get Payment Method Detail
+      tags:
+      - Payment Method
+  /api/v1/masterPaymentGateway/getAllConfig:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a list of all payment methods with optional search functionality
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Search term for payment method
+        in: query
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of payment methods
+          schema:
+            items:
+              $ref: '#/definitions/response.PaymentMethodResponse'
+            type: array
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get All Payment Methods
+      tags:
+      - Payment Method
+  /api/v1/masterPaymentGateway/update/{id}:
+    put:
+      consumes:
+      - multipart/form-data
+      description: Update an existing payment method with optional logo upload
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Payment Method ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Payment Method Name
+        in: formData
+        name: paymentMethod
+        required: true
+        type: string
+      - description: Bank Code
+        in: formData
+        name: bankCode
+        required: true
+        type: string
+      - description: Bank Name
+        in: formData
+        name: bankName
+        required: true
+        type: string
+      - description: Administrative Fee
+        in: formData
+        name: adminFee
+        required: true
+        type: integer
+      - description: Is Percentage (true/false)
+        in: formData
+        name: isPercentage
+        type: string
+      - description: Administrative Fee Percentage
+        in: formData
+        name: adminFeePercentage
+        type: string
+      - description: Logo for the Payment Method
+        in: formData
+        name: methodLogo
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Payment method updated successfully
+          schema:
+            $ref: '#/definitions/models.PaymentMethod'
+        "400":
+          description: Invalid input or ID
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Update Payment Method
+      tags:
+      - Payment Method
+  /api/v1/paymentReport/exportExcel:
+    get:
+      consumes:
+      - application/json
+      description: Generate an Excel file of payment reports based on various filters
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Filter by payment type ID
+        in: query
+        name: paymentTypeId
+        type: integer
+      - description: Filter by user ID
+        in: query
+        name: userId
+        type: integer
+      - description: Filter by student ID
+        in: query
+        name: studentId
+        type: integer
+      - description: Filter by payment status
+        in: query
+        name: paymentStatus
+        type: string
+      - description: Filter by school grade ID
+        in: query
+        name: schoolGradeId
+        type: integer
+      - description: Filter by school class ID
+        in: query
+        name: schoolClassId
+        type: integer
+      - description: Start date filter in yyyy-MM-dd format
+        in: query
+        name: startDate
+        type: string
+      - description: End date filter in yyyy-MM-dd format
+        in: query
+        name: endDate
+        type: string
+      produces:
+      - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+      responses:
+        "200":
+          description: Excel file with payment report data
+          schema:
+            type: file
+        "400":
+          description: Invalid input or date range
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: Unauthorized access
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Export Payment Report to Excel
+      tags:
+      - Payment Report
+  /api/v1/paymentReport/getList:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a paginated list of payment reports based on various filters
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - default: 1
+        description: Page number for pagination
+        in: query
+        name: page
+        type: integer
+      - default: 10
+        description: Number of items per page
+        in: query
+        name: limit
+        type: integer
+      - description: Field to sort by
+        in: query
+        name: sortBy
+        type: string
+      - default: asc
+        description: Sort order (asc/desc)
+        in: query
+        name: sortOrder
+        type: string
+      - description: Filter by payment type ID
+        in: query
+        name: paymentTypeId
+        type: integer
+      - description: Filter by user ID
+        in: query
+        name: userId
+        type: integer
+      - description: Filter by student ID
+        in: query
+        name: studentId
+        type: integer
+      - description: Filter by payment status
+        in: query
+        name: paymentStatus
+        type: string
+      - description: Filter by school grade ID
+        in: query
+        name: schoolGradeId
+        type: integer
+      - description: Filter by school class ID
+        in: query
+        name: schoolClassId
+        type: integer
+      - description: Start date filter in yyyy-MM-dd format
+        in: query
+        name: startDate
+        type: string
+      - description: End date filter in yyyy-MM-dd format
+        in: query
+        name: endDate
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Paginated payment report data
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Invalid input or date range
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: Unauthorized access
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get Payment Report
+      tags:
+      - Payment Report
+  /api/v1/paymentStatus:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a list of available payment statuses from a JSON data
+        source
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of payment statuses
+          schema:
+            items:
+              $ref: '#/definitions/response.PaymentType'
+            type: array
+        "500":
+          description: Failed to retrieve payment statuses
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get List of Payment Statuses
+      tags:
+      - Payment
+  /api/v1/paymentType:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a list of available payment types from a JSON data source
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of payment types
+          schema:
+            items:
+              $ref: '#/definitions/response.PaymentType'
+            type: array
+        "500":
+          description: Failed to retrieve payment types
+          schema:
+            additionalProperties: true
+            type: object
+      summary: List Payment Types
+      tags:
+      - Payment Type
+  /api/v1/prefixClass/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a new prefix class with the provided details
+      parameters:
+      - description: Prefix Class Data
+        in: body
+        name: prefixClass
+        required: true
+        schema:
+          $ref: '#/definitions/request.PrefixClassCreate'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Prefix class created successfully
+          schema:
+            $ref: '#/definitions/models.PrefixClass'
+        "400":
+          description: Validation error or missing fields
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Failed to create prefix class
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Create a Prefix Class
+      tags:
+      - PrefixClass
+  /api/v1/prefixClass/getListPrefixClass:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a list of prefix classes filtered by search criteria
+      parameters:
+      - description: Search filter for prefix classes
+        in: query
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of prefix classes
+          schema:
+            items:
+              $ref: '#/definitions/response.PrefixCLassResponse'
+            type: array
+        "500":
+          description: Failed to retrieve prefix classes
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get Prefix Class
+      tags:
+      - PrefixClass
+  /api/v1/province:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a list of provinces from the provided data file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of provinces
+          schema:
+            items:
+              additionalProperties: true
+              type: object
+            type: array
+        "500":
+          description: Failed to retrieve provinces data
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get Provinces Data
+      tags:
+      - Province
+  /api/v1/role/detail/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get Data Role By Id
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      - description: Role ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Role'
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get Data Role By Id
+      tags:
+      - Roles
+  /api/v1/role/getAllRole:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve all roles with pagination and search functionality
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      - default: 1
+        description: Page number
+        in: query
+        name: page
+        type: integer
+      - default: 10
+        description: Limit number of results
+        in: query
+        name: limit
+        type: integer
+      - description: Search keyword
+        in: query
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Role'
+            type: array
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get All Roles
+      tags:
+      - Roles
+  /api/v1/schedule/checkFailedTransaction:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves billing transactions that have failed payments based
+        on the schedule
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of billing transactions with payment failure
+          schema:
+            items:
+              additionalProperties: true
+              type: object
+            type: array
+        "500":
+          description: Failed to retrieve billing transactions
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Check for Payment Failures Using Schedule
+      tags:
+      - Schedule
+  /api/v1/schedule/sendDummyNotif:
+    post:
+      consumes:
+      - application/json
+      description: Sends a dummy notification for testing purposes
+      parameters:
+      - description: Notification details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/request.DummyNotifRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success message
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Invalid request payload
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Failed to send notification
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Send a Dummy Notification
+      tags:
+      - Schedule
+  /api/v1/school/create:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Create a new school with all required fields and optional logo
+        and letterhead files
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: NPSN
+        in: formData
+        name: npsn
+        required: true
+        type: integer
+      - description: School Name
+        in: formData
+        name: schoolName
+        required: true
+        type: string
+      - description: School Province
+        in: formData
+        name: schoolProvince
+        required: true
+        type: string
+      - description: School City
+        in: formData
+        name: schoolCity
+        required: true
+        type: string
+      - description: School Phone
+        in: formData
+        name: schoolPhone
+        required: true
+        type: string
+      - description: School Address
+        in: formData
+        name: schoolAddress
+        required: true
+        type: string
+      - description: School Mail
+        in: formData
+        name: schoolMail
+        required: true
+        type: string
+      - description: School Fax
+        in: formData
+        name: schoolFax
+        required: true
+        type: string
+      - description: School Grade ID
+        in: formData
+        name: schoolGradeId
+        required: true
+        type: integer
+      - description: School Logo
+        in: formData
+        name: schoolLogo
+        type: file
+      - description: School Letterhead
+        in: formData
+        name: schoolLetterhead
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.School'
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Create a New School
+      tags:
+      - Schools
+  /api/v1/school/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a school by its ID
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: School ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.School'
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Delete School by ID
+      tags:
+      - Schools
+  /api/v1/school/detail/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get details of a school by its ID
+      parameters:
+      - description: School ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.DetailSchoolResponse'
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get School Data by ID
+      tags:
+      - Schools
+  /api/v1/school/getAllOnboarding:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all onboarding schools with a search option
+      parameters:
+      - description: Search term
+        in: query
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              items:
+                $ref: '#/definitions/response.SchoolOnBoardingResponse'
+              type: array
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get All Onboarding Schools
+      tags:
+      - Schools
+  /api/v1/school/getAllSchool:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all schools with pagination, search, and sorting
+        options
+      parameters:
+      - default: 1
+        description: Page number
+        in: query
+        name: page
+        type: integer
+      - default: 10
+        description: Number of items per page
+        in: query
+        name: limit
+        type: integer
+      - description: Search term
+        in: query
+        name: search
+        type: string
+      - description: Sort by field
+        in: query
+        name: sortBy
+        type: string
+      - default: asc
+        description: Sort order
+        in: query
+        name: sortOrder
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/response.SchoolListResponse'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get All Schools
+      tags:
+      - Schools
+  /api/v1/school/update/{id}:
+    put:
+      consumes:
+      - multipart/form-data
+      description: Update an existing school's information by its ID
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: School ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: NPSN
+        in: formData
+        name: npsn
+        type: integer
+      - description: School Name
+        in: formData
+        name: schoolName
+        type: string
+      - description: School Province
+        in: formData
+        name: schoolProvince
+        type: string
+      - description: School City
+        in: formData
+        name: schoolCity
+        type: string
+      - description: School Phone
+        in: formData
+        name: schoolPhone
+        type: string
+      - description: School Address
+        in: formData
+        name: schoolAddress
+        type: string
+      - description: School Mail
+        in: formData
+        name: schoolMail
+        type: string
+      - description: School Fax
+        in: formData
+        name: schoolFax
+        type: string
+      - description: School Grade ID
+        in: formData
+        name: schoolGradeId
+        type: integer
+      - description: School Logo
+        in: formData
+        name: schoolLogo
+        type: file
+      - description: School Letterhead
+        in: formData
+        name: schoolLetterhead
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.School'
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Update School Data by ID
+      tags:
+      - Schools
+  /api/v1/schoolClass/create:
+    post:
+      consumes:
+      - application/json
+      description: Creates a new school class with provided data
+      parameters:
+      - description: School class details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/request.SchoolClassCreateUpdateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Message and created school class data
+          schema:
+            $ref: '#/definitions/models.SchoolClass'
+        "400":
+          description: Invalid request payload
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Failed to create school class
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Create a New School Class
+      tags:
+      - SchoolClass
+  /api/v1/schoolClass/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes a specific school class by ID
+      parameters:
+      - description: School Class ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Message indicating successful deletion
+          schema:
+            $ref: '#/definitions/models.SchoolClass'
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Failed to delete school class
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Delete a School Class
+      tags:
+      - SchoolClass
+  /api/v1/schoolClass/detail/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a specific school class by ID
+      parameters:
+      - description: School Class ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: School class data
+          schema:
+            $ref: '#/definitions/response.SchoolClassDetailResponse'
+        "404":
+          description: Data not found
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get School Class by ID
+      tags:
+      - SchoolClass
+  /api/v1/schoolClass/getAllSchoolClass:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a list of school classes with pagination, sorting, and
+        search options
+      parameters:
+      - default: 1
+        description: Page number
+        in: query
+        name: page
+        type: integer
+      - default: 0
+        description: Limit of records per page
+        in: query
+        name: limit
+        type: integer
+      - description: Search term
+        in: query
+        name: search
+        type: string
+      - description: Sort field
+        in: query
+        name: sortBy
+        type: string
+      - default: asc
+        description: Sort order
+        in: query
+        name: sortOrder
+        type: string
+      - default: false
+        description: Show deleted data
+        in: query
+        name: showDeletedData
+        type: boolean
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of school classes
+          schema:
+            items:
+              $ref: '#/definitions/response.SchoolClassListResponse'
+            type: array
+        "500":
+          description: Failed to fetch data
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get All School Classes
+      tags:
+      - SchoolClass
+  /api/v1/schoolClass/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Updates an existing school class with provided data
+      parameters:
+      - description: School Class ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated school class details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/request.SchoolClassCreateUpdateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Message and updated school class data
+          schema:
+            $ref: '#/definitions/models.SchoolClass'
+        "400":
+          description: Invalid request payload
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Failed to update school class
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Update a School Class
+      tags:
+      - SchoolClass
+  /api/v1/schoolGrade/create:
+    post:
+      consumes:
+      - application/json
+      description: Creates a new school grade with provided data
+      parameters:
+      - description: School grade details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/request.SchoolGradeCreateUpdateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Message and created school grade data
+          schema:
+            $ref: '#/definitions/models.SchoolGrade'
+        "400":
+          description: Invalid request payload
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Failed to create school grade
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Create a New School Grade
+      tags:
+      - SchoolGrade
+  /api/v1/schoolGrade/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes a specific school grade by ID
+      parameters:
+      - description: School Grade ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Message indicating successful deletion
+          schema:
+            $ref: '#/definitions/models.SchoolGrade'
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Failed to delete school grade
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Delete a School Grade
+      tags:
+      - SchoolGrade
+  /api/v1/schoolGrade/detail/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a specific school grade by ID
+      parameters:
+      - description: School Grade ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: School grade data
+          schema:
+            $ref: '#/definitions/models.SchoolGrade'
+        "404":
+          description: Data not found
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get School Grade by ID
+      tags:
+      - SchoolGrade
+  /api/v1/schoolGrade/getAllSchoolGrade:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a list of school grades with pagination and search options
+      parameters:
+      - default: 1
+        description: Page number
+        in: query
+        name: page
+        type: integer
+      - default: 0
+        description: Limit of records per page
+        in: query
+        name: limit
+        type: integer
+      - description: Search term
+        in: query
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of school grades
+          schema:
+            items:
+              $ref: '#/definitions/response.SchoolGradeListResponse'
+            type: array
+        "500":
+          description: Failed to fetch data
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get All School Grades
+      tags:
+      - SchoolGrade
+  /api/v1/schoolGrade/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Updates an existing school grade with provided data
+      parameters:
+      - description: School Grade ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated school grade details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/request.SchoolGradeCreateUpdateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Message and updated school grade data
+          schema:
+            $ref: '#/definitions/models.SchoolGrade'
+        "400":
+          description: Invalid request payload
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Failed to update school grade
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Update a School Grade
+      tags:
+      - SchoolGrade
+  /api/v1/schoolMajor/create:
+    post:
+      consumes:
+      - application/json
+      description: Creates a new school major with the provided details
+      parameters:
+      - description: School major details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/request.SchoolMajorCreate'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Message and created school major data
+          schema:
+            $ref: '#/definitions/models.SchoolMajor'
+        "400":
+          description: Bad request - Missing required fields
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Failed to create school major
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Create a New School Major
+      tags:
+      - SchoolMajor
+  /api/v1/schoolMajor/getListSchoolMajor:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a list of school majors with optional search filter
+      parameters:
+      - description: Search term for school major
+        in: query
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of school majors
+          schema:
+            items:
+              $ref: '#/definitions/response.SchoolMajorResponse'
+            type: array
+        "500":
+          description: Failed to fetch data
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get All School Majors
+      tags:
+      - SchoolMajor
+  /api/v1/schoolYear/create:
+    post:
+      consumes:
+      - application/json
+      description: Creates a new school year with the provided details
+      parameters:
+      - description: School year details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/request.SchoolYearCreateUpdateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Message and created school year data
+          schema:
+            $ref: '#/definitions/models.SchoolYear'
+        "400":
+          description: Bad request - Missing required fields
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Failed to create school year
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Create a New School Year
+      tags:
+      - SchoolYear
+  /api/v1/schoolYear/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes a school year by its ID
+      parameters:
+      - description: School Year ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Message indicating successful deletion
+          schema:
+            $ref: '#/definitions/models.SchoolYear'
+        "500":
+          description: Failed to delete school year
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Delete a School Year
+      tags:
+      - SchoolYear
+  /api/v1/schoolYear/detail/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a school year by its ID
+      parameters:
+      - description: School Year ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: School year data
+          schema:
+            $ref: '#/definitions/response.SchoolYearDetailResponse'
+        "404":
+          description: School year not found
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get School Year by ID
+      tags:
+      - SchoolYear
+  /api/v1/schoolYear/getAllSchoolYear:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a paginated list of school years with optional search,
+        sorting, and filters
+      parameters:
+      - default: 1
+        description: Page number
+        in: query
+        name: page
+        type: integer
+      - default: 0
+        description: Number of records per page
+        in: query
+        name: limit
+        type: integer
+      - description: Search term for school year
+        in: query
+        name: search
+        type: string
+      - default: '""'
+        description: Sort by field
+        in: query
+        name: sortBy
+        type: string
+      - default: '"asc"'
+        description: Sort order
+        in: query
+        name: sortOrder
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of school years
+          schema:
+            items:
+              $ref: '#/definitions/response.SchoolYearListResponse'
+            type: array
+        "500":
+          description: Failed to fetch data
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get All School Years
+      tags:
+      - SchoolYear
+  /api/v1/schoolYear/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Updates an existing school year with the provided details
+      parameters:
+      - description: School Year ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated school year details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/request.SchoolYearCreateUpdateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Message and updated school year data
+          schema:
+            $ref: '#/definitions/models.SchoolYear'
+        "400":
+          description: Bad request - Invalid input
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Failed to update school year
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Update a School Year
+      tags:
+      - SchoolYear
+  /api/v1/student/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a new student record
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      - description: Student data
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/request.CreateStudentRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Student'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Create New Student
+      tags:
+      - Students
+  /api/v1/student/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a student record by ID
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      - description: Student ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Delete Student
+      tags:
+      - Students
+  /api/v1/student/detail/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve student details by their ID
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      - description: Student ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.DetailStudentResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get Student By ID
+      tags:
+      - Students
+  /api/v1/student/exportExcel:
+    get:
+      consumes:
+      - application/json
+      description: Export student data to an Excel file
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      - description: Search term
+        in: query
+        name: search
+        type: string
+      - description: Search by NIS
+        in: query
+        name: searchNis
+        type: string
+      - description: Grade ID
+        in: query
+        name: gradeId
+        type: integer
+      - description: Year ID
+        in: query
+        name: yearId
+        type: integer
+      - description: Student status
+        in: query
+        name: status
+        type: string
+      - description: School ID
+        in: query
+        name: schoolId
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Exported Excel file
+          schema:
+            type: file
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Export Students to Excel
+      tags:
+      - Students
+  /api/v1/student/getAllStudent:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a list of all students with various filters
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      - default: 1
+        description: Page number
+        in: query
+        name: page
+        type: integer
+      - default: 10
+        description: Number of records per page
+        in: query
+        name: limit
+        type: integer
+      - description: Search term
+        in: query
+        name: search
+        type: string
+      - description: Search by NIS
+        in: query
+        name: searchNis
+        type: string
+      - description: Student status
+        in: query
+        name: status
+        type: string
+      - description: Grade ID
+        in: query
+        name: gradeId
+        type: integer
+      - description: Year ID
+        in: query
+        name: yearId
+        type: integer
+      - description: School ID
+        in: query
+        name: schoolId
+        type: integer
+      - description: Class ID
+        in: query
+        name: classId
+        type: integer
+      - description: Sort by field
+        in: query
+        name: sortBy
+        type: string
+      - description: Sort order
+        in: query
+        name: sortOrder
+        type: string
+      - description: Student ID
+        in: query
+        name: studentId
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/response.StudentListResponse'
+            type: array
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get All Students
+      tags:
+      - Students
+  /api/v1/student/getFileExcel:
+    get:
+      consumes:
+      - application/json
+      description: Download an Excel file template for students
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Excel file template
+          schema:
+            type: file
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Download Excel Format for Students
+      tags:
+      - Students
+  /api/v1/student/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update an existing student's data
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      - description: Student ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated student data
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/request.UpdateStudentRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Student'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Update Student Data
+      tags:
+      - Students
+  /api/v1/student/upload:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Upload student data from a CSV or Excel file
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      - description: Student data file
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Upload Students
+      tags:
+      - Students
+  /api/v1/student/user/{user_id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a student by user ID
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Student'
+            type: array
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get Student By User ID
+      tags:
+      - Students
+  /api/v1/transaction/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a new transaction for a student with the provided payment
+        method.
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Create Transaction Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.CreateTransactionRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Create New Transaction
+      tags:
+      - Transactions
+  /api/v1/transaction/donation:
+    post:
+      consumes:
+      - application/json
+      description: Process a payment donation for a student.
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Create Transaction Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.CreateTransactionRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Make Payment Donation
+      tags:
+      - Transactions
+  /api/v1/transaction/midtrans/checkPayment:
+    get:
+      consumes:
+      - application/json
+      description: Check the payment status of a Midtrans transaction by order ID.
+      parameters:
+      - description: Midtrans Order ID
+        in: query
+        name: orderId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Check Midtrans Payment Status
+      tags:
+      - Transactions
+  /api/v1/transaction/midtrans/payment:
+    post:
+      consumes:
+      - application/json
+      description: Process a payment using Midtrans payment gateway.
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Create Transaction Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.CreateTransactionRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Make Midtrans Payment
+      tags:
+      - Transactions
+  /api/v1/user/changePassword:
+    post:
+      consumes:
+      - application/json
+      description: Change user password using the provided token
+      parameters:
+      - description: Token
+        in: query
+        name: token
+        required: true
+        type: string
+      - description: New Password
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/request.ChangePasswordRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Change Password
+      tags:
+      - Users
+  /api/v1/user/checkEmaill:
+    get:
+      consumes:
+      - application/json
+      description: Check if the provided email is available or already taken
+      parameters:
+      - description: Email
+        in: query
+        name: email
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: boolean
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Check if Email is Already Taken
+      tags:
+      - Users
+  /api/v1/user/checkUsername:
+    get:
+      consumes:
+      - application/json
+      description: Check if the provided username is available or already taken
+      parameters:
+      - description: Username
+        in: query
+        name: username
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: boolean
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Check if Username is Already Taken
+      tags:
+      - Users
+  /api/v1/user/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a new user after checking access and parsing the request
+        body
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: User Data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/request.UserCreateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Create a new user
+      tags:
+      - User
+  /api/v1/user/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a user with the specified ID
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Delete a user
+      tags:
+      - User
+  /api/v1/user/detail/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get detailed information about a user by their ID
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.DetailUserResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get User Data By ID
+      tags:
+      - Users
+  /api/v1/user/edit/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update an existing user with the given data
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated User Data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/request.UserUpdateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Update user data
+      tags:
+      - User
+  /api/v1/user/generateTokenChangePassword:
+    get:
+      consumes:
+      - application/json
+      description: Generate a token for changing password via email
+      parameters:
+      - description: User Email
+        in: query
+        name: email
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Generate Token for Change Password
+      tags:
+      - Users
+  /api/v1/user/getByEmail:
+    get:
+      consumes:
+      - application/json
+      description: Get detailed information about a user by their email address
+      parameters:
+      - description: Email address of the user
+        in: query
+        name: email
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get User Data By Email
+      tags:
+      - Users
+  /api/v1/user/getFileExcel:
+    get:
+      consumes:
+      - application/json
+      description: Generate and download an Excel file for a user
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/octet-stream
+      responses:
+        "200":
+          description: Excel file
+          schema:
+            type: file
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Download Excel Format for User
+      tags:
+      - Users
+  /api/v1/user/resendVerificationEmail/{id}:
+    post:
+      consumes:
+      - application/json
+      description: Resend Email Verification to user
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Resend Email Verification
+      tags:
+      - Users
+  /api/v1/user/updatePassword/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Change the user's password without using a token, using the current
+        password and new password
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Password Change Request
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/request.UpdatePasswordRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Change User Password without Token
+      tags:
+      - Users
+  /api/v1/user/upload:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Upload users via CSV or Excel file
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      - description: File
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Upload Users via File
+      tags:
+      - Users
+  /api/v1/user/uploadFoto:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Upload a new profile photo for the user
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      - description: Profile Image
+        in: formData
+        name: image
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Upload User Photo
+      tags:
+      - Users
+  /api/v1/user/verifyEmail:
+    get:
+      consumes:
+      - application/json
+      description: Verify the user's email address by using a token
+      parameters:
+      - description: Token for email verification
+        in: query
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Verify email using token
+      tags:
+      - User
+  /api/v1/user/verifyTokenChangePassword:
+    get:
+      consumes:
+      - application/json
+      description: Verify the token for change password
+      parameters:
+      - description: Change Password Token
+        in: query
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Verify Token for Change Password
+      tags:
+      - Users
+  /api/v1/users/getAllUser:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of users with optional filters for role, pagination,
+        and status
+      parameters:
+      - description: Authorization
+        format: '"Bearer token"'
+        in: header
+        name: Authorization
+        type: string
+      - description: Comma-separated list of role IDs
+        in: query
+        name: roleId
+        type: string
+      - default: 1
+        description: Page number
+        in: query
+        name: page
+        type: integer
+      - default: 10
+        description: Limit per page
+        in: query
+        name: limit
+        type: integer
+      - description: Search term
+        in: query
+        name: search
+        type: string
+      - description: School ID
+        in: query
+        name: schoolId
+        type: integer
+      - default: '"created_at"'
+        description: Sort field
+        in: query
+        name: sortBy
+        type: string
+      - default: '"desc"'
+        description: Sort order
+        in: query
+        name: sortOrder
+        type: string
+      - description: Status filter
+        in: query
+        name: status
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/response.UserListResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get All Users
+      tags:
+      - Users
+  /api/v1/webhook:
+    post:
+      consumes:
+      - application/json
+      description: Handle incoming webhook from the payment gateway for transaction
+        status updates.
+      parameters:
+      - description: Webhook Payload
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/request.WebhookPayload'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Handle Payment Webhook
+      tags:
+      - Transactions
+swagger: "2.0"

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="20" author="alif">
+        <createTable tableName="students">
+            <column name="id" type="bigserial">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="timestamptz"/>
+            <column name="created_by" type="int8"/>
+            <column name="updated_at" type="timestamptz"/>
+            <column name="updated_by" type="int8"/>
+            <column name="deleted_at" type="timestamptz"/>
+            <column name="deleted_by" type="int8"/>
+            <column name="nisn" type="int8"/>
+            <column name="registration_number" type="text"/>
+            <column name="nik" type="int8"/>
+            <column name="full_name" type="text"/>
+            <column name="gender" type="text"/>
+            <column name="religion" type="text"/>
+            <column name="citizenship" type="text"/>
+            <column name="birth_place" type="text"/>
+            <column name="birth_date" type="timestamptz"/>
+            <column name="address" type="text"/>
+            <column name="school_grade" type="text"/>
+            <column name="school_grade_id" type="int8"/>
+            <column name="school_class" type="text"/>
+            <column name="school_class_id" type="int8"/>
+            <column name="no_handphone" type="int8"/>
+            <column name="height" type="text"/>
+            <column name="weight" type="text"/>
+            <column name="medical_history" type="text"/>
+            <column name="distance_to_school" type="int8"/>
+            <column name="sibling" type="text"/>
+            <column name="nick_name" type="text"/>
+            <column name="email" type="text"/>
+            <column name="entry_year" type="text"/>
+            <column name="status" type="text"/>
+            <column name="image" type="text"/>
+            <column name="nis" type="text"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

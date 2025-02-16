@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="42" author="januar">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="school_years" columnName="start_date"/>
+            </not>
+            <not>
+                <columnExists tableName="school_years" columnName="end_date"/>
+            </not>
+        </preConditions>
+        <addColumn tableName="school_years">
+            <column name="start_date" type="timestamptz">
+                <constraints nullable="true"/>
+            </column>
+            <column name="end_date" type="timestamptz">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

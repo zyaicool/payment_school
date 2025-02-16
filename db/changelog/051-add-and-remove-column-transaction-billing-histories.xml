@@ -1,0 +1,26 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="51" author="anval">        
+        <addColumn tableName="transaction_billing_histories">
+            <column name="order_id" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="invoice_number" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="transaction_status" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+        <dropColumn  tableName="transaction_billing_histories">
+            <column  name="transaction_date"/>
+            <column  name="transaction_amount"/>
+            <column  name="description"/>
+            <column  name="transaction_type"/>
+        </dropColumn>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="5" author="alif">
+        <createTable tableName="users">
+            <column name="id" type="bigserial">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="timestamptz"/>
+            <column name="created_by" type="int8"/>
+            <column name="updated_at" type="timestamptz"/>
+            <column name="updated_by" type="int8"/>
+            <column name="deleted_at" type="timestamptz"/>
+            <column name="deleted_by" type="int8"/>
+            <column name="role_id" type="int8"/>
+            <column name="username" type="text"/>
+            <column name="email" type="text"/>
+            <column name="password" type="text"/>
+            <column name="is_verification" type="boolean" defaultValueBoolean="false"/>
+            <column name="is_block" type="boolean" defaultValueBoolean="false"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

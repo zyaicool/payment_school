@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="32" author="alif">
+        <createTable tableName="transaction_billings">
+            <column name="id" type="bigserial">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="timestamptz"/>
+            <column name="created_by" type="int8"/>
+            <column name="updated_at" type="timestamptz"/>
+            <column name="updated_by" type="int8"/>
+            <column name="deleted_at" type="timestamptz"/>
+            <column name="deleted_by" type="int8"/>
+            <column name="billing_list" type="text"/>
+            <column name="transaction_type" type="text"/>
+            <column name="virtual_account_number" type="int8"/>
+            <column name="total_amount" type="int8"/>
+            <column name="reference_number" type="text"/>
+            <column name="description" type="text"/>
+            <column name="billing_id" type="int8"/>
+            <column name="student_id" type="int8"/>
+            <column name="order_id" type="text"/>
+            <column name="transaction_status" type="text"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

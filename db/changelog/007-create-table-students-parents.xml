@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="7" author="alif">
+        <createTable tableName="student_parents">
+            <column name="id" type="bigserial">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="timestamptz"/>
+            <column name="created_by" type="int8"/>
+            <column name="updated_at" type="timestamptz"/>
+            <column name="updated_by" type="int8"/>
+            <column name="deleted_at" type="timestamptz"/>
+            <column name="deleted_by" type="int8"/>
+            <column name="user_id" type="int8"/>
+            <column name="parent_name" type="text"/>
+            <column name="parent_address" type="text"/>
+            <column name="parent_handphone" type="int8"/>
+            <column name="parent_mail" type="text"/>
+            <column name="parent_citizenship" type="text"/>
+            <column name="parent_salary" type="text"/>
+            <column name="parent_status" type="text"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

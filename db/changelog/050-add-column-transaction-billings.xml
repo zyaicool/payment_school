@@ -1,0 +1,23 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="50" author="anval">        
+        <addColumn tableName="transaction_billings">
+            <column name="invoice_number" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="billing_student_ids" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="account_number" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+        <dropColumn  tableName="transaction_billings">
+            <column  name="billing_list"/>
+        </dropColumn>
+    </changeSet>
+</databaseChangeLog>

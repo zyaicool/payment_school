@@ -1,0 +1,34 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="62" author="anval">
+        <createTable tableName="billing_details">
+            <column name="id" type="bigserial">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="billing_id" type="int">
+                <constraints nullable="true" />
+            </column>
+            <column name="detail_billing_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="amount" type="bigint">
+                <constraints nullable="true" />
+            </column>            
+            <column name="due_date" type="timestamp">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_at" type="timestamp">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_by" type="int" />
+            <column name="updated_at" type="timestamp" />
+            <column name="updated_by" type="int" />
+            <column name="deleted_at" type="timestamp" />
+            <column name="deleted_by" type="int" />
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

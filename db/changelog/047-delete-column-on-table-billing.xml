@@ -1,0 +1,28 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="47" author="syaichul">
+         <preConditions onFail="MARK_RAN">
+            <tableExists tableName="billings"/>
+            <not>
+                <columnExists tableName="billings" columnName="billing_type"/>
+            </not>
+        </preConditions>
+        <dropColumn tableName="billings" columnName="billing_type_id"/>
+        <dropColumn tableName="billings" columnName="start_date"/>
+        <dropColumn tableName="billings" columnName="end_date"/>
+        <dropColumn tableName="billings" columnName="payment_type"/>
+        <dropColumn tableName="billings" columnName="tenor"/>
+        <dropColumn tableName="billings" columnName="ppn"/>
+        <dropColumn tableName="billings" columnName="discount"/>
+
+        <addColumn tableName="billings">
+            <column name="billing_type" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

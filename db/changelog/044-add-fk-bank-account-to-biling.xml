@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="44" author="januar">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="billings"/>
+            <not>
+                <columnExists tableName="billings" columnName="bank_account_id"/>
+                <columnExists tableName="billings" columnName="billing_amount"/>
+            </not>
+        </preConditions>
+
+        <!-- Adding new column bank_account_id with foreign key constraint -->
+        <addColumn tableName="billings">
+            <column name="bank_account_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+        <addColumn tableName="billings">
+            <column name="billing_type" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+        
+        <modifyDataType tableName="billings" columnName="billing_amount" newDataType="bigint"/>
+
+        <!-- Adding foreign key constraint with ON DELETE RESTRICT -->
+        <addForeignKeyConstraint
+            baseTableName="billings"
+            baseColumnNames="bank_account_id"
+            referencedTableName="bank_accounts"
+            referencedColumnNames="id"
+            constraintName="fk_billing_bank_account_id"
+            onDelete="RESTRICT"/>
+    </changeSet>
+
+</databaseChangeLog>

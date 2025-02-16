@@ -1,0 +1,18 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="56" author="anval">
+        <dropNotNullConstraint tableName="transaction_billing_details" columnName="master_payment_method_id" columnDataType="varchar" />
+        <dropNotNullConstraint tableName="transaction_billing_details" columnName="discount" columnDataType="int" />
+        <dropNotNullConstraint tableName="transaction_billing_details" columnName="discount_type" columnDataType="varchar(255)" />
+        <dropNotNullConstraint tableName="transaction_billing_details" columnName="change_amount" columnDataType="int" />
+        <dropNotNullConstraint tableName="transaction_billing_details" columnName="bank_name" columnDataType="varchar(255)" />
+        <dropNotNullConstraint tableName="transaction_billing_details" columnName="virtual_account_number" columnDataType="varchar(255)" />
+
+        <modifyDataType tableName="transaction_billing_details" columnName="master_payment_method_id" newDataType="int"/>
+       
+    </changeSet>
+</databaseChangeLog>
